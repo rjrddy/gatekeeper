@@ -216,6 +216,6 @@
     "candidate": "deploy",
     "interpretation": "temporal correlation only; unknown timestamps retained"
   },
-  "elapsed_seconds": 0.01787158299703151,
+  "elapsed_seconds": 0.007681749993935227,
   "scope": "Seeded injection accuracy is not public CI accuracy. Public sample selected by hand."
 }

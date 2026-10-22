@@ -1,6 +1,6 @@
 {
   "approved": false,
-  "artifact_sha256": "4ce22f4c4aae9a0b38a359a76487071810fb4b6f51d1965ea5f1773b40278218",
+  "artifact_sha256": "aa7555728ddccd95edead6b4ca4d5d48b4a300a77f5b7dad5df72231ddbf78f5",
   "blocked": [
     "GHSA-q2q7-5pp4-w6pg: High",
     "GHSA-38jv-5279-wg99: High",

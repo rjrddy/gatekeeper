@@ -33,7 +33,7 @@ jobs:
           python scripts/configure.py
           mkdir -p docs/results
           trap 'docker compose logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"; docker compose down' EXIT
-          docker compose up --build -d
+          docker compose up --build --wait --wait-timeout 180
           for i in $(seq 1 120); do curl -fsS http://localhost:8082/health && break; sleep 2; done
           curl --fail http://localhost:8082/health
           set -a

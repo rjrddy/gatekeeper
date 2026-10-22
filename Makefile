@@ -29,7 +29,7 @@ bench: build
 	.venv/bin/python scripts/bench_supply.py
 
 demo:
-	docker compose up --build
+	docker compose up --build --wait
 scan:
 	.venv/bin/pip-audit --progress-spinner off
 	npm --prefix apps/web audit --audit-level=high

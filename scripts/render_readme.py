@@ -43,15 +43,15 @@ flowchart LR
 
 ```sh
 python3 scripts/configure.py
-docker compose up --build -d
+docker compose up --build --wait
 docker compose exec api python -m gatekeeper.seed
 ```
 
-Open http://localhost:8082 and use the generated password in ignored `.env`. Docker Compose and Python are prerequisites. The third command runs after the API health check passes. The console computes real seeded analyses and routes real local requests. Saved scanner attestations expire; run `make setup build`, `python3 scripts/tools.py` and `make bench` for fresh evidence, then use **Verify signed evidence**. Rust/rustup, Node, GitHub CLI and network access are prerequisites for native benchmarks. The scanner tools use official release checksums.
+Open http://localhost:8082 and use the generated password in ignored `.env`. Docker Compose and Python are prerequisites. Compose waits for the API health check before the seed command. The console computes real seeded analyses and routes real local requests. Saved scanner attestations expire; run `make setup build`, `python3 scripts/tools.py` and `make bench` for fresh evidence, then use **Verify signed evidence**. Rust/rustup, Node, GitHub CLI and network access are prerequisites for native benchmarks. The scanner tools use official release checksums.
 
 5. **Decisions and limits:**
 
-**Partial.** [Vercel evidence site]({published}) presents the real recording and saved results. A persistent interactive backend is not hosted. GitHub App manifest, signature ingestion and token plumbing exist; installation and live JUnit artifact ingestion remain unfinished. PR Markdown previews are available; posting is disabled. Workflow-level metadata is not test-level flake evidence. All benchmarks use synthetic or public data and original code.
+**Partial.** Vercel evidence hosting: {published}. This page presents the real recording and saved results. A persistent interactive backend is not hosted. GitHub App manifest, signature ingestion and token plumbing exist; installation and live JUnit artifact ingestion remain unfinished. PR Markdown previews are available; posting is disabled. Workflow-level metadata is not test-level flake evidence. All benchmarks use synthetic or public data and original code.
 
 SQLite and an API controller are deliberately single-host; requests already in flight may finish on the old upstream. A whole-host outage, multi-replica ownership, fleet convergence and scale latency are not measured. Terraform rules cover AWS root modules and reject unsupported module/provider identities. Dependency reach is not causal impact. The negative supply fixture contains metadata, not installed vulnerable code; it is not a scan of the whole app. Local Ed25519 trust is not SLSA or transparency logging. See [design](docs/DESIGN.md), [ADRs](docs/adr/), [quality checkpoint](docs/QUALITY.md), [interview guide](INTERVIEW.md), [drill](docs/DRILL.md), and [salvage record](docs/migration/gatekeeper.md).
 

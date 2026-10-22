@@ -15,3 +15,5 @@ apps/web/node_modules/
 apps/web/dist/
 deploy/site/dist/
 docs/results/recordings/
+.vercel
+.env*
