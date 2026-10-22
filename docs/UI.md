@@ -35,6 +35,6 @@ Public evidence preview: [desktop](results/ui-redesign/site-desktop.png), [mobil
 
 ## Verification disposition
 
-Final build, lint and existing test suites pass. The redesigned console was exercised against actual isolated local services, not mocked counters. The public-page previews use saved evidence and the new actual recording. Remote CI for these UI commits awaits publishing approval.
+Final build, lint and existing test suites pass. The redesigned console was exercised against actual isolated local services, not mocked counters. The public-page previews use saved evidence and the new actual recording. The local proof was captured before publication. The repository CI workflow reports the currently pushed revision; README lists the public URL where available.
 
 [The initial review-harness failure](results/ui-redesign/initial-console-review.log) came from an incorrect expectation that the existing attestation had expired. The actual valid bundle correctly blocked its High advisories. The original advisory assertion was restored and the full real-service browser flow passed; no verifier behavior was changed.
