@@ -175,6 +175,18 @@ class Store:
                 "UPDATE rollout SET state=?,active=?,stable=?,last_result=?",
                 ("promoted" if passed else "rolled_back", active, stable, json.dumps(result)),
             )
+            if not passed:
+                event = {
+                    "id": f"canary-alert-{epoch}",
+                    "kind": "alert",
+                    "component": "synthetic-api",
+                    "at": time.time(),
+                    "summary": "Behavior mismatch, timeout or controller fault",
+                }
+                c.execute(
+                    "INSERT INTO reports(kind,body,created) VALUES('incident',?,?)",
+                    (json.dumps(event), event["at"]),
+                )
             c.execute(
                 "INSERT INTO audit(kind,body,created) VALUES(?,?,?)",
                 (

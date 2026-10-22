@@ -1,6 +1,51 @@
 .venv/bin/ruff check gatekeeper scripts tests
 All checks passed!
 .venv/bin/ruff format --check gatekeeper scripts tests
-18 files already formatted
+23 files already formatted
 /Users/rajreddy/dev/outreach/flagships/gatekeeper/.cache/cargo/bin/cargo fmt --manifest-path agent/Cargo.toml --check
 /Users/rajreddy/dev/outreach/flagships/gatekeeper/.cache/cargo/bin/cargo clippy --locked --manifest-path agent/Cargo.toml --all-targets -- -D warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.21s
+npm --prefix apps/web run lint
+
+> gatekeeper-console@0.1.0 lint
+> prettier --check src
+
+Checking formatting...
+All matched files use Prettier code style!
+.venv/bin/python -m pytest -q
+.......................                                                  [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /Users/rajreddy/dev/outreach/flagships/gatekeeper/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+23 passed, 1 warning in 0.80s
+/Users/rajreddy/dev/outreach/flagships/gatekeeper/.cache/cargo/bin/cargo test --locked --manifest-path agent/Cargo.toml
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (agent/target/debug/deps/gatekeeper_agent-6159992d048e4708)
+
+running 8 tests
+test tests::artifact_mutation_blocked ... ok
+test tests::wrong_commit_is_rejected ... ok
+test tests::untrusted_key_blocked ... ok
+test tests::high_severity_cannot_be_signed_into_approval ... ok
+test tests::valid_signature_and_digest_pass ... ok
+test tests::scanner_error_is_not_clean_scan ... ok
+test tests::expiry_and_future_claims_blocked ... ok
+test tests::arbitrary_byte_mutations_rejected ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/main.rs (agent/target/debug/deps/gatekeeper_agent-fd326365a43a1fad)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests gatekeeper_agent
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

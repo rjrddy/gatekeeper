@@ -16,6 +16,7 @@ ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 GK_AGENT=/app/bin/gatekeeper-ag
 RUN groupadd --gid 10001 gatekeeper && useradd --uid 10001 --gid 10001 --create-home gatekeeper && mkdir /data && chown gatekeeper:gatekeeper /data
 COPY pyproject.toml ./
 COPY gatekeeper/ ./gatekeeper/
+COPY fixtures/ ./fixtures/
 RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
 COPY --from=agent /build/target/release/gatekeeper-agent /app/bin/gatekeeper-agent
 COPY --from=web /web/dist /app/apps/web/dist

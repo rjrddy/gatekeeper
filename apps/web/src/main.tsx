@@ -16,7 +16,7 @@ type Finding = {
 type Analysis = {
   quarantine: Quarantine[];
   clusters: { group: number; label: string; log: string }[];
-  plans: { blocked: boolean; findings: Finding[] }[];
+  plans: { blocked: boolean; findings: Finding[]; comment_preview?: string }[];
 };
 type Report = {
   id: number;
@@ -127,6 +127,9 @@ function App() {
   const supply = state?.reports.find((r) => r.kind === "supply")?.body as
     | Supply
     | undefined;
+  const publicAnalysis = state?.reports.find(
+    (r) => r.kind === "public-analysis",
+  )?.body as Analysis | undefined;
   const clusters = Array.from(
     new Set(analysis?.clusters.map((c) => c.group) ?? []),
   );
@@ -151,6 +154,16 @@ function App() {
           ⌘ GATEKEEPER
         </a>
         <span className="headerlabel">RELEASE EVIDENCE / OPERATIONS</span>
+        {ready && (
+          <button
+            className="secondary"
+            onClick={() =>
+              void action("/api/logout").then(() => setReady(false))
+            }
+          >
+            Sign out
+          </button>
+        )}
         <a href="https://github.com/rjrddy/gatekeeper">Source ↗</a>
       </header>
       <main>
@@ -417,6 +430,30 @@ function App() {
                 </section>
                 <section className="panel">
                   <div className="sectiontitle">
+                    <h2>Public CI evidence</h2>
+                    <button
+                      disabled={busy}
+                      onClick={() => void action("/api/public/analyze")}
+                    >
+                      Analyze public excerpts
+                    </button>
+                  </div>
+                  <p className="muted">
+                    Reviewed visible signatures from pytest-dev/pytest. Small
+                    selected sample, not an installed GitHub App or a general
+                    accuracy claim.
+                  </p>
+                  {publicAnalysis?.clusters.map((r, i) => (
+                    <details key={i}>
+                      <summary>
+                        Group {r.group} · {r.label}
+                      </summary>
+                      <pre>{r.log}</pre>
+                    </details>
+                  ))}
+                </section>
+                <section className="panel">
+                  <div className="sectiontitle">
                     <h2>Failure signatures</h2>
                     <span>{clusters.length || "No"} stored groups</span>
                   </div>
@@ -525,6 +562,17 @@ function App() {
                         ))}
                       </div>
                     </article>
+                  ))}
+                <h3>PR comment preview</h3>
+                <p className="muted">
+                  Reviewable Markdown only; this console never posts to a
+                  repository.
+                </p>
+                {analysis?.plans
+                  .filter((p) => p.blocked)
+                  .slice(0, 1)
+                  .map((p, i) => (
+                    <pre key={i}>{p.comment_preview}</pre>
                   ))}
               </section>
             )}

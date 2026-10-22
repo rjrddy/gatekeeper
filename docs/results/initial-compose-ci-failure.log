@@ -1,0 +1,683 @@
+gates	Fresh clone Compose with independent HTTP services	﻿2026-10-22T03:10:43.8514580Z ##[group]Run git clone --no-local . /tmp/gatekeeper-clean
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8515071Z ^[[36;1mgit clone --no-local . /tmp/gatekeeper-clean^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8515413Z ^[[36;1mcd /tmp/gatekeeper-clean^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8515700Z ^[[36;1mpython scripts/configure.py^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8515979Z ^[[36;1mmkdir -p docs/results^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8516659Z ^[[36;1mtrap 'docker compose logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"; docker compose down' EXIT^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8517364Z ^[[36;1mdocker compose up --build -d^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8517801Z ^[[36;1mfor i in $(seq 1 120); do curl -fsS http://localhost:8082/health && break; sleep 2; done^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8518299Z ^[[36;1mcurl --fail http://localhost:8082/health^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8518597Z ^[[36;1mset -a^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8518792Z ^[[36;1m. ./.env^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8518985Z ^[[36;1mset +a^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8519275Z ^[[36;1m"$GITHUB_WORKSPACE/.venv/bin/python" scripts/compose_smoke.py^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8519824Z ^[[36;1mdocker compose exec -T api python -m pip install --target /tmp/audit pip-audit^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8520528Z ^[[36;1mdocker compose exec -T -e PYTHONPATH=/tmp/audit api python -m pip_audit --format json > docs/results/container-audit.json^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8580758Z shell: /usr/bin/bash -e {0}
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8581021Z env:
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8581285Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8581724Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8582148Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8582712Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8583089Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8583467Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8584124Z ##[endgroup]
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.8681381Z Cloning into '/tmp/gatekeeper-clean'...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:43.9323138Z Created ignored .env (mode 0600). Open locally for the operator password.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.4364870Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.4365591Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.4366131Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.4366649Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.4367207Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.5301367Z #1 [internal] load local bake definitions
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.6742081Z #1 reading from stdin 2.15kB done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.6742615Z #1 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.8549347Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.8550117Z #2 [stable internal] load build definition from Dockerfile
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.8550698Z #2 transferring dockerfile: 1.10kB done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.8551040Z #2 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.8551183Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:44.8551566Z #3 [stable internal] load metadata for docker.io/library/node:22-bookworm-slim
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0773247Z #3 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0773502Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0774160Z #4 [auth] library/python:pull token for registry-1.docker.io
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0774671Z #4 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0774837Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0775166Z #5 [auth] library/node:pull token for registry-1.docker.io
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0775633Z #5 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0775802Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0776107Z #6 [auth] library/rust:pull token for registry-1.docker.io
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.0776564Z #6 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.2274225Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.2274941Z #7 [stable internal] load metadata for docker.io/library/rust:1.99.1-bookworm
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6873674Z #7 DONE 0.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6874586Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6875230Z #8 [slow internal] load metadata for docker.io/library/python:3.13-slim-bookworm
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6876016Z #8 DONE 0.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6876201Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6876744Z #3 [slow internal] load metadata for docker.io/library/node:22-bookworm-slim
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6877516Z #3 DONE 0.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6878155Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6878453Z #9 [api internal] load .dockerignore
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6879089Z #9 transferring context: 154B done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6879583Z #9 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6879821Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6880105Z #10 [api internal] load build context
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6880740Z #10 transferring context: 141.75kB done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6881220Z #10 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6881456Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6882589Z #11 [api stage-2 1/9] FROM docker.io/library/python:3.13-slim-bookworm@sha256:a881a81282cca8c57f97014867fa651def1b3799030cc6b1cff45ed55ba8ef36
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.6884630Z #11 resolve docker.io/library/python:3.13-slim-bookworm@sha256:a881a81282cca8c57f97014867fa651def1b3799030cc6b1cff45ed55ba8ef36 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.8484458Z #11 sha256:514f59c1209a1df965b3efaf7cc2ede57d0cbf21868236eb5c056abcb714ad41 250B / 250B 0.1s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.8486580Z #11 sha256:70e1fe648bab453e8570a90bce0d674dfdfe9707d1b8e9e823a76d0e91d44278 0B / 3.34MB 0.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.9559311Z #11 sha256:70e1fe648bab453e8570a90bce0d674dfdfe9707d1b8e9e823a76d0e91d44278 3.34MB / 3.34MB 0.2s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.9562075Z #11 sha256:a6a788508a7265428337143dd4f37091356d9122dfa8c289c3242b1413916fa5 0B / 12.61MB 0.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:45.9565450Z #11 sha256:11422d7ca1a44390a32bd8d8d9dc5946b4d053b3bbd9507d682e35584ba84a26 0B / 28.25MB 0.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.0935583Z #11 sha256:a6a788508a7265428337143dd4f37091356d9122dfa8c289c3242b1413916fa5 12.61MB / 12.61MB 0.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.0937252Z #11 sha256:11422d7ca1a44390a32bd8d8d9dc5946b4d053b3bbd9507d682e35584ba84a26 28.25MB / 28.25MB 0.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.0938631Z #11 extracting sha256:11422d7ca1a44390a32bd8d8d9dc5946b4d053b3bbd9507d682e35584ba84a26
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3464929Z #11 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3465406Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3467201Z #12 [bad web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3470093Z #12 resolve docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3471774Z #12 sha256:9d58805976c12f11013d188c510c3520e3f061c1b311d4905afe5865aa496e63 449B / 449B 0.1s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3473304Z #12 sha256:696628b66b50a8ea2d374542f47107bc19fb3fd29825211da5c68b74a1b01555 1.71MB / 1.71MB 0.1s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3475458Z #12 sha256:ba8be34911c2eabcd63c9da67f2e8887ddf912df62c1223ca377ef9e9655cfba 49.89MB / 49.89MB 0.4s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3476959Z #12 sha256:b43ad0aedb87ae13912d52799d0d5552c146dced05197a7fa83b117cb3308906 3.31kB / 3.31kB 0.1s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.3477731Z #12 DONE 0.7s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4958837Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4960899Z #13 [good agent 1/4] FROM docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4964584Z #13 resolve docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4966883Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 34.60MB / 221.85MB 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4969384Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 54.53MB / 211.76MB 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4971288Z #13 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 26.21MB / 64.43MB 0.3s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.4973128Z #13 sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 7.34MB / 23.87MB 0.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.6457956Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 52.43MB / 221.85MB 0.6s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.6486234Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 75.50MB / 211.76MB 0.6s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.6495122Z #13 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 44.04MB / 64.43MB 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.6497548Z #13 sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 23.87MB / 23.87MB 0.3s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.7958734Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 81.79MB / 221.85MB 0.8s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.7960230Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 111.15MB / 211.76MB 0.8s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.7962982Z #13 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 64.43MB / 64.43MB 0.6s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.9458048Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 118.49MB / 221.85MB 0.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:46.9459934Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 148.90MB / 211.76MB 0.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.0965584Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 153.09MB / 221.85MB 1.1s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.0974821Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 183.50MB / 211.76MB 1.1s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.2455280Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 189.79MB / 221.85MB 1.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.2456508Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 206.57MB / 211.76MB 1.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.3953117Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 209.72MB / 221.85MB 1.4s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.3954849Z #13 sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 23.87MB / 23.87MB 1.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.5318729Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 221.85MB / 221.85MB 1.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.5320094Z #13 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 64.43MB / 64.43MB 1.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.5321736Z #13 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 22.02MB / 48.52MB 0.2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:47.6822160Z #13 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 48.52MB / 48.52MB 0.3s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:48.4246340Z #13 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 48.52MB / 48.52MB 1.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:48.6128659Z #13 sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 221.85MB / 221.85MB 2.5s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:48.6132575Z #13 sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 211.76MB / 211.76MB 2.4s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:48.6134440Z #13 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 48.52MB / 48.52MB 1.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:48.6135826Z #13 extracting sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3079487Z #13 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3079775Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3080873Z #11 [bad stage-2 1/9] FROM docker.io/library/python:3.13-slim-bookworm@sha256:a881a81282cca8c57f97014867fa651def1b3799030cc6b1cff45ed55ba8ef36
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3082557Z #11 extracting sha256:11422d7ca1a44390a32bd8d8d9dc5946b4d053b3bbd9507d682e35584ba84a26 2.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3084201Z #11 extracting sha256:70e1fe648bab453e8570a90bce0d674dfdfe9707d1b8e9e823a76d0e91d44278 0.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3085606Z #11 extracting sha256:a6a788508a7265428337143dd4f37091356d9122dfa8c289c3242b1413916fa5 0.5s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3086954Z #11 extracting sha256:514f59c1209a1df965b3efaf7cc2ede57d0cbf21868236eb5c056abcb714ad41 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.3087776Z #11 DONE 3.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.4580596Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.4582155Z #12 [slow web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.4583612Z #12 extracting sha256:b43ad0aedb87ae13912d52799d0d5552c146dced05197a7fa83b117cb3308906 0.2s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:49.4584845Z #12 extracting sha256:ba8be34911c2eabcd63c9da67f2e8887ddf912df62c1223ca377ef9e9655cfba
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:51.1857644Z #12 extracting sha256:ba8be34911c2eabcd63c9da67f2e8887ddf912df62c1223ca377ef9e9655cfba 2.7s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:51.3360575Z #12 extracting sha256:ba8be34911c2eabcd63c9da67f2e8887ddf912df62c1223ca377ef9e9655cfba 2.7s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:51.3361983Z #12 extracting sha256:696628b66b50a8ea2d374542f47107bc19fb3fd29825211da5c68b74a1b01555
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:51.9214138Z #12 extracting sha256:696628b66b50a8ea2d374542f47107bc19fb3fd29825211da5c68b74a1b01555 0.7s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.0719085Z #12 extracting sha256:696628b66b50a8ea2d374542f47107bc19fb3fd29825211da5c68b74a1b01555 0.7s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.0720190Z #12 extracting sha256:9d58805976c12f11013d188c510c3520e3f061c1b311d4905afe5865aa496e63
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.0815126Z #12 extracting sha256:9d58805976c12f11013d188c510c3520e3f061c1b311d4905afe5865aa496e63 0.2s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3267675Z #12 extracting sha256:9d58805976c12f11013d188c510c3520e3f061c1b311d4905afe5865aa496e63 0.2s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3268958Z #12 DONE 4.4s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3269416Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3270623Z #13 [api agent 1/4] FROM docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3272294Z #13 extracting sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 2.9s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3273473Z #13 extracting sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 0.8s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.3274729Z #13 extracting sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8160883Z #13 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8161198Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8161516Z #14 [good stage-2 2/9] WORKDIR /app
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8161969Z #14 DONE 3.4s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8162099Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8162246Z #15 [slow web 2/6] WORKDIR /web
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8162504Z #15 DONE 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8162736Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8163452Z #16 [api web 3/6] COPY apps/web/package*.json ./
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.8164219Z #16 DONE 0.1s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.9331343Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:52.9332637Z #17 [stable web 4/6] RUN npm ci
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1370054Z #17 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1370606Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1372037Z #18 [api stage-2 3/9] RUN groupadd --gid 10001 gatekeeper && useradd --uid 10001 --gid 10001 --create-home gatekeeper && mkdir /data && chown gatekeeper:gatekeeper /data
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1373401Z #18 DONE 0.4s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1374060Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1374571Z #19 [good stage-2 4/9] COPY pyproject.toml ./
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1375223Z #19 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1375551Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1376050Z #20 [stable stage-2 5/9] COPY gatekeeper/ ./gatekeeper/
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.1376721Z #20 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.2873196Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:53.2875262Z #21 [stable stage-2 6/9] RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.1217319Z #21 1.977 Requirement already satisfied: pip==26.2.2 in /usr/local/lib/python3.13/site-packages (26.2.2)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.3985690Z #21 2.279 Collecting setuptools==84.0.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6084904Z #21 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6085234Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6085465Z #17 [api web 4/6] RUN npm ci
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6085877Z #17 2.275 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6086395Z #17 2.275 added 23 packages, and audited 24 packages in 2s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6086887Z #17 2.275 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6087297Z #17 2.275 6 packages are looking for funding
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6087834Z #17 2.275   run `npm fund` for details
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6088226Z #17 2.276 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6088594Z #17 2.276 found 0 vulnerabilities
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6089001Z #17 2.279 npm notice
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6089626Z #17 2.279 npm notice New major version of npm available! 10.9.9 -> 12.2.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6090561Z #17 2.279 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6091392Z #17 2.279 npm notice To update run: npm install -g npm@12.2.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6091942Z #17 2.279 npm notice
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6092263Z #17 DONE 2.7s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6092443Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6092668Z #22 [bad web 5/6] COPY apps/web/ ./
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6093059Z #22 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6093240Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6094666Z #21 [stable stage-2 6/9] RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6095854Z #21 2.479   Downloading setuptools-84.0.0-py3-none-any.whl.metadata (6.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6096710Z #21 2.507 Downloading setuptools-84.0.0-py3-none-any.whl (818 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.6097883Z #21 2.620    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 818.2/818.2 kB 9.6 MB/s  0:00:00
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:55.9035391Z #21 2.736 Installing collected packages: setuptools
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:56.4176067Z #21 3.430 Successfully installed setuptools-84.0.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:56.5687542Z #21 3.431 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:58.8338910Z #21 5.695 Processing ./.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:10:58.8339630Z #21 5.697   Installing build dependencies: started
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0824368Z #21 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0834233Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0847665Z #23 [api web 6/6] RUN npm run build
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0872839Z #23 0.306 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0891397Z #23 0.306 > gatekeeper-console@0.1.0 build
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0899844Z #23 0.306 > tsc --noEmit && vite build
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0936164Z #23 0.306 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0952812Z #23 2.696 vite v6.4.4 building for production...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0964949Z #23 2.825 transforming...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0965770Z #23 4.147 ✓ 28 modules transformed.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0973463Z #23 4.414 rendering chunks...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0974025Z #23 4.426 computing gzip size...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0975056Z #23 4.440 dist/index.html                   0.53 kB │ gzip:  0.36 kB
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0976077Z #23 4.440 dist/assets/index-EFH-7La8.css    5.80 kB │ gzip:  1.89 kB
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0977144Z #23 4.440 dist/assets/index-C7OLZWFE.js   206.34 kB │ gzip: 64.56 kB
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0977915Z #23 4.441 ✓ built in 1.70s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.0978361Z #23 DONE 4.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.2327161Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.2329227Z #13 [bad agent 1/4] FROM docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.2338906Z #13 extracting sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 2.2s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.2343499Z #13 extracting sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:00.8558148Z #13 extracting sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 6.5s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.0068474Z #13 extracting sha256:8145ffc7a2f0dffd51043904ca409df2bcb0c4113f9f6710aaa4f55f8812e400 6.5s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.0073624Z #13 extracting sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.6637011Z #13 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.6640050Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.6644867Z #21 [stable stage-2 6/9] RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.6649203Z #21 8.526   Installing build dependencies: finished with status 'done'
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:01.6651905Z #21 8.527   Getting requirements to build wheel: started
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:02.7137953Z #21 9.727   Getting requirements to build wheel: finished with status 'done'
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:02.8648125Z #21 9.728   Preparing metadata (pyproject.toml): started
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.0739546Z #21 10.94   Preparing metadata (pyproject.toml): finished with status 'done'
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4507187Z #21 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4507706Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4508782Z #13 [slow agent 1/4] FROM docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4509746Z #13 extracting sha256:a502800b31e54e7ea2698fec486640dfcee1590902228c7d4cf230cfcfc65bb9 3.5s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4510558Z #13 DONE 18.7s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4510683Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4511199Z #21 [stable stage-2 6/9] RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.4511928Z #21 11.33 Collecting fastapi<1,>=0.156 (from gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.5569373Z #21 11.46   Downloading fastapi-0.159.1-py3-none-any.whl.metadata (26 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.5570469Z #21 11.56 Collecting uvicorn<1,>=0.54 (from gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.7828521Z #21 11.57   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.7829326Z #21 11.63 Collecting httpx<1,>=0.28 (from gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.7830057Z #21 11.65   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:04.9424150Z #21 11.96 Collecting cryptography>=46 (from gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.0938161Z #21 11.97   Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.0939097Z #21 12.03 Collecting PyJWT<3,>=2.10 (from gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.0939783Z #21 12.04   Downloading pyjwt-2.15.1-py3-none-any.whl.metadata (3.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.2559543Z #21 12.11 Collecting starlette>=0.46.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.2560664Z #21 12.12   Downloading starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.3586896Z #21 12.27 Collecting pydantic>=2.9.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.3588389Z #21 12.28   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.3590148Z #21 12.36 Collecting typing-extensions>=4.8.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.4752562Z #21 12.37   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.4754257Z #21 12.43 Collecting typing-inspection>=0.4.2 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.4755541Z #21 12.44   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.6270830Z #21 12.49 Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.6272592Z #21 12.50   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.6274564Z #21 12.56 Collecting opentelemetry-api>=1.44.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.6275957Z #21 12.58   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.6276988Z #21 12.64 Collecting anyio (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.7704356Z #21 12.65   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.7705535Z #21 12.72 Collecting certifi (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.7708611Z #21 12.73   Downloading certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.9102685Z #21 12.78 Collecting httpcore==1.* (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.9103627Z #21 12.80   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.9104612Z #21 12.86 Collecting idna (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:05.9105251Z #21 12.87   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.1457796Z #21 12.92 Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.1458811Z #21 12.94   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.1459646Z #21 13.00 Collecting click>=7.0 (from uvicorn<1,>=0.54->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.1460699Z #21 13.01   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.2801955Z #21 13.16 Collecting cffi>=2.0.0 (from cryptography>=46->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.2803063Z #21 13.17   Downloading cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.2805240Z #21 13.23 Collecting pycparser (from cffi>=2.0.0->cryptography>=46->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.2806541Z #21 13.24   Downloading pycparser-3.11-py3-none-any.whl.metadata (8.2 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.2807524Z #21 13.29 Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:06.4475180Z #21 13.31   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1197603Z #21 ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1197977Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1198667Z #24 [stable agent 2/4] WORKDIR /build
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1199253Z #24 DONE 2.7s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1199764Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1200070Z #25 [bad agent 3/4] COPY agent/ ./
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1200967Z #25 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1201211Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1202474Z #21 [stable stage-2 6/9] RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1204233Z #21 14.03 Collecting pydantic-core==2.50.1 (from pydantic>=2.9.0->fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1205587Z #21 14.04   Downloading pydantic_core-2.50.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1206612Z #21 14.08 Downloading fastapi-0.159.1-py3-none-any.whl (149 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1207305Z #21 14.09 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.1207982Z #21 14.12 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.2369087Z #21 14.13 Downloading pyjwt-2.15.1-py3-none-any.whl (33 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.2369927Z #21 14.16 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.2370816Z #21 14.18 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.2371311Z #21 14.20 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.2371890Z #21 14.22 Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.3440736Z #21 14.28    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 93.6 MB/s  0:00:00
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.3441735Z #21 14.31 Downloading cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.3442554Z #21 14.33 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.3443081Z #21 14.34 Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4576978Z #21 14.36 Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4579514Z #21 14.37 Downloading pydantic_core-2.50.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4581871Z #21 14.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 208.9 MB/s  0:00:00
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4583019Z #21 14.40 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4584164Z #21 14.41 Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4584917Z #21 14.43 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4585585Z #21 14.44 Downloading idna-3.20-py3-none-any.whl (69 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4586304Z #21 14.46 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.4587120Z #21 14.47 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.6100649Z #21 14.49 Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.6102075Z #21 14.50 Downloading pycparser-3.11-py3-none-any.whl (51 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.6103446Z #21 14.56 Building wheels for collected packages: gatekeeper-ci
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:07.6104850Z #21 14.56   Building wheel for gatekeeper-ci (pyproject.toml): started
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:08.8745596Z #21 15.71   Building wheel for gatekeeper-ci (pyproject.toml): finished with status 'done'
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:08.8747782Z #21 15.71   Created wheel for gatekeeper-ci: filename=gatekeeper_ci-0.1.0-py3-none-any.whl size=16623 sha256=09bb7f0b8657248b40a49ffed81f947febdffb0027feaaa63f97941323c95c7b
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:08.8750231Z #21 15.72   Stored in directory: /tmp/pip-ephem-wheel-cache-dualo1e7/wheels/19/62/e5/caf0138816cbbc0c92b8fb19626cf9ac282f22194a65231821
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:08.8752099Z #21 15.72 Successfully built gatekeeper-ci
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:09.0254957Z #21 15.89 Installing collected packages: typing-extensions, PyJWT, pycparser, idna, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, opentelemetry-api, httpcore, cffi, anyio, starlette, pydantic, httpx, cryptography, fastapi, gatekeeper-ci
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.2205388Z #21 18.11 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.2209265Z #21 18.11 Successfully installed PyJWT-2.15.1 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.19 cffi-2.1.1 click-8.5.0 cryptography-50.0.2 fastapi-0.159.1 gatekeeper-ci-0.1.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 opentelemetry-api-1.45.1 pycparser-3.11 pydantic-2.14.1 pydantic-core-2.50.1 starlette-1.9.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.2215653Z #21 18.11 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6717988Z #21 DONE 18.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6722119Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6722965Z #26 [api agent 4/4] RUN cargo build --release --locked
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6724240Z #26 0.185     Updating crates.io index
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6725114Z #26 0.335  Downloading crates ...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6725947Z #26 0.558   Downloaded anyhow v1.0.104
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6726951Z #26 0.566   Downloaded curve25519-dalek-derive v0.1.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6727927Z #26 0.568   Downloaded anstyle v1.0.14
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6728786Z #26 0.571   Downloaded anstream v1.0.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6729646Z #26 0.574   Downloaded anstyle-query v1.1.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6730604Z #26 0.576   Downloaded typenum v1.20.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6731479Z #26 0.582   Downloaded anstyle-parse v1.0.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6732350Z #26 0.588   Downloaded libc v0.2.191
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6733178Z #26 0.665   Downloaded memchr v2.8.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6734477Z #26 0.673   Downloaded sha2 v0.10.9
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6735346Z #26 0.677   Downloaded digest v0.10.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6736248Z #26 0.679   Downloaded base64ct v1.8.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6737180Z #26 0.683   Downloaded cfg-if v1.0.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6738048Z #26 0.685   Downloaded signature v2.2.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6738989Z #26 0.687   Downloaded curve25519-dalek v4.1.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6739947Z #26 0.698   Downloaded proc-macro2 v1.0.107
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6740917Z #26 0.702   Downloaded version_check v0.9.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6741810Z #26 0.704   Downloaded rand_core v0.6.4
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6742678Z #26 0.706   Downloaded clap_builder v4.6.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6743599Z #26 0.715   Downloaded block-buffer v0.10.4
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6744863Z #26 0.717   Downloaded cpufeatures v0.2.17
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6745749Z #26 0.719   Downloaded pkcs8 v0.10.2
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6746630Z #26 0.723   Downloaded unicode-ident v1.0.27
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6747515Z #26 0.727   Downloaded ed25519 v2.2.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6748340Z #26 0.730   Downloaded spki v0.7.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6749149Z #26 0.732   Downloaded rand v0.8.8
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6749949Z #26 0.737   Downloaded hex v0.4.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6750778Z #26 0.739   Downloaded colorchoice v1.0.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6751669Z #26 0.741   Downloaded rand_chacha v0.3.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6752516Z #26 0.743   Downloaded semver v1.0.28
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6753342Z #26 0.746   Downloaded heck v0.5.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6754454Z #26 0.748   Downloaded generic-array v0.14.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6755298Z #26 0.750   Downloaded serde v1.0.229
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6756137Z #26 0.755   Downloaded zerocopy v0.8.63
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6756987Z #26 0.796   Downloaded zeroize v1.9.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6758453Z #26 0.798   Downloaded clap_lex v1.1.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6759299Z #26 0.799   Downloaded der v0.7.10
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6760112Z #26 0.807   Downloaded quote v1.0.47
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6760962Z #26 0.811   Downloaded ed25519-dalek v2.2.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6761833Z #26 0.815   Downloaded itoa v1.0.18
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6762657Z #26 0.818   Downloaded subtle v2.6.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6763526Z #26 0.820   Downloaded clap_derive v4.6.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6764694Z #26 0.823   Downloaded serde_core v1.0.229
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6765565Z #26 0.826   Downloaded clap v4.6.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6766402Z #26 0.841   Downloaded crypto-common v0.1.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6767673Z #26 0.842   Downloaded serde_json v1.0.154
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6768541Z #26 0.852   Downloaded syn v2.0.119
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6769409Z #26 0.866   Downloaded syn v3.0.9
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6770198Z #26 0.881   Downloaded zmij v1.0.23
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6771012Z #26 0.883   Downloaded rustc_version v0.4.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6771897Z #26 0.885   Downloaded getrandom v0.2.17
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6772784Z #26 0.889   Downloaded ppv-lite86 v0.2.21
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6774110Z #26 0.891   Downloaded is_terminal_polyfill v1.70.2
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6775102Z #26 0.893   Downloaded const-oid v0.9.6
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6776021Z #26 0.895   Downloaded serde_derive v1.0.229
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6776906Z #26 0.900   Downloaded utf8parse v0.2.2
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6777838Z #26 0.901   Downloaded strsim v0.11.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6778719Z #26 0.934    Compiling proc-macro2 v1.0.107
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6779596Z #26 0.934    Compiling quote v1.0.47
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6780556Z #26 0.936    Compiling unicode-ident v1.0.27
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6781477Z #26 0.936    Compiling version_check v0.9.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6782576Z #26 1.017    Compiling cfg-if v1.0.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6783463Z #26 1.066    Compiling libc v0.2.191
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6784556Z #26 1.115    Compiling typenum v1.20.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6785513Z #26 1.218    Compiling generic-array v0.14.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6786486Z #26 1.361    Compiling zerocopy v0.8.63
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6787344Z #26 1.746    Compiling semver v1.0.28
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6788197Z #26 2.139    Compiling rustc_version v0.4.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6789051Z #26 2.252    Compiling syn v3.0.9
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6789896Z #26 2.463    Compiling serde_core v1.0.229
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6790785Z #26 2.790    Compiling utf8parse v0.2.2
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6791633Z #26 2.873    Compiling getrandom v0.2.17
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6792492Z #26 2.878    Compiling block-buffer v0.10.4
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6793414Z #26 2.919    Compiling crypto-common v0.1.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6794627Z #26 2.977    Compiling anstyle-parse v1.0.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6795535Z #26 3.034    Compiling rand_core v0.6.4
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6796387Z #26 3.121    Compiling digest v0.10.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6797249Z #26 3.276    Compiling curve25519-dalek v4.1.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6798129Z #26 3.342    Compiling syn v2.0.119
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6798999Z #26 3.450    Compiling cpufeatures v0.2.17
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6799969Z #26 3.528    Compiling is_terminal_polyfill v1.70.2
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6800925Z #26 3.624    Compiling colorchoice v1.0.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6801825Z #26 3.700    Compiling anstyle-query v1.1.5
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6802697Z #26 3.747    Compiling anstyle v1.0.14
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6803529Z #26 3.966    Compiling zmij v1.0.23
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:11.6804633Z #26 4.168    Compiling anstream v1.0.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:13.8315872Z #26 6.640    Compiling heck v0.5.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:13.9697438Z #26 6.780    Compiling zeroize v1.9.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.1222646Z #26 6.918    Compiling anyhow v1.0.104
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.2563138Z #26 7.101    Compiling subtle v2.6.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.4320024Z #26 7.205    Compiling serde_json v1.0.154
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.4320963Z #26 7.301    Compiling signature v2.2.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.5420054Z #26 7.380    Compiling serde v1.0.229
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.7526673Z #26 7.490    Compiling curve25519-dalek-derive v0.1.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.7529010Z #26 7.517    Compiling strsim v0.11.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:14.7529997Z #26 7.550    Compiling clap_lex v1.1.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:15.0398357Z #26 7.836    Compiling clap_builder v4.6.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:15.3755663Z #26 8.173    Compiling ppv-lite86 v0.2.21
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:15.5871166Z #26 8.416    Compiling ed25519 v2.2.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:15.8345192Z #26 8.536    Compiling rand_chacha v0.3.1
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:15.8346237Z #26 8.631    Compiling clap_derive v4.6.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:16.3733105Z #26 9.170    Compiling serde_derive v1.0.229
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:17.9122868Z #26 10.71    Compiling sha2 v0.10.9
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:18.6820283Z #26 11.48    Compiling itoa v1.0.18
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:18.8762623Z #26 11.67    Compiling memchr v2.8.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:20.0438893Z #26 12.87    Compiling ed25519-dalek v2.2.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:20.2396925Z #26 12.99    Compiling clap v4.6.7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:20.2398237Z #26 13.04    Compiling rand v0.8.8
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:21.0306950Z #26 13.83    Compiling hex v0.4.3
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:21.3105401Z #26 14.11    Compiling gatekeeper-agent v0.1.0 (/build)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.7017278Z #26 17.54     Finished `release` profile [optimized] target(s) in 17.38s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.7018130Z #26 DONE 17.6s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.7018393Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.7019125Z #27 [stable stage-2 7/9] COPY --from=agent /build/target/release/gatekeeper-agent /app/bin/gatekeeper-agent
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9080346Z #27 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9080890Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9081426Z #28 [api stage-2 8/9] COPY --from=web /web/dist /app/apps/web/dist
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9082014Z #28 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9082145Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9082449Z #29 [bad stage-2 9/9] COPY deploy/logging.json /app/deploy/logging.json
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9082861Z #29 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9082987Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9083106Z #30 [slow] exporting to image
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:24.9083374Z #30 exporting layers
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.3313462Z #30 exporting layers 1.6s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.5631963Z #30 exporting manifest sha256:f9ac0eaeac23059281388c921e035e96154ecc284ade00120ecc0b8080c4b74f 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.5633638Z #30 exporting config sha256:e6499332f0197a531db9ebcfb923f1a06b92252bef55ccc6f5fc2de80f5daba6 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.5635605Z #30 exporting attestation manifest sha256:c6363b5acf345f56d637f956ea85c0cbb8c58bd336c41516aa209739cb837bbc 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.5637334Z #30 exporting manifest list sha256:d30380f3b6978b45481a33461d3ece3dc5d97d4b1def5d971cc98fa5d80cace4 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.5638571Z #30 naming to docker.io/library/gatekeeper-local:latest done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:26.5639450Z #30 unpacking to docker.io/library/gatekeeper-local:latest
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8007802Z #30 unpacking to docker.io/library/gatekeeper-local:latest 1.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8008550Z #30 DONE 2.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8008786Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8009031Z #31 [bad] exporting to image
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8010024Z #31 exporting layers 1.6s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8011458Z #31 exporting manifest sha256:5e41ec4e855734607a91d5f32125b5f114beb8f9421cc6bb4c510689f217fe3c 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8013152Z #31 exporting config sha256:8be0efa4beb983aeb3f33adcaafe0301f7cf30b8fe613903a294141c32186920 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8015392Z #31 exporting attestation manifest sha256:f5291fb84dbe0d1b789dfd99071d4a44c752d8c18bf5478d9e267e2f7cb2d9cb 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8017057Z #31 exporting manifest list sha256:871c5062cde4721d6d2b2bf6598e4928ed4ae82e497a1004d0b02e9b9694450b 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8018528Z #31 naming to docker.io/library/gatekeeper-local:latest done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8019703Z #31 unpacking to docker.io/library/gatekeeper-local:latest 1.2s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8020477Z #31 DONE 2.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8020695Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8020910Z #32 [api] exporting to image
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8021455Z #32 exporting layers 1.6s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8022780Z #32 exporting manifest sha256:b6cfd18bd6661628122d16dcc4e6dee22fc20d6c2c1c0e9f7e784026f639a5a6 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8024765Z #32 exporting config sha256:ad1d34b1014b71047943e46308862dc48e552c35c34d32d2083bf06c357b10ad 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8026504Z #32 exporting attestation manifest sha256:71a41ac0ca601e5eb13a79e076aadac50c5df44d5624418d4ff0a4c4194e37ae 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8028093Z #32 exporting manifest list sha256:5699003ef1232cb8c8017a3121d589b9f56912082de32258c1b7426bbef552bc 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8029413Z #32 naming to docker.io/library/gatekeeper-local:latest done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8030467Z #32 unpacking to docker.io/library/gatekeeper-local:latest 1.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8031234Z #32 DONE 2.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8031486Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8032225Z #33 [good] exporting to image
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8032684Z #33 exporting layers 1.6s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8033570Z #33 exporting manifest sha256:63dfcdce5efe242b07d1b4c0ef6b2418fca161b73e270d9996e6bf2350c9d5a8 done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8035008Z #33 exporting config sha256:f1a7ef836e2da5c62206a3fa62b1b7473c97660765d4a9d2097f782f06b6064b 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8036746Z #33 exporting attestation manifest sha256:aa0e98a23de4d009c3c7260494a1b0bef216abdb35f8987e9fb2d6f3b9f5d2d9 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8038110Z #33 exporting manifest list sha256:9ea79b3dfe089099fd5c1f0ca64834c1734430bb60489521425459c66c985506 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8039358Z #33 naming to docker.io/library/gatekeeper-local:latest done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8040055Z #33 unpacking to docker.io/library/gatekeeper-local:latest 1.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8040639Z #33 DONE 2.9s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8040892Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8041162Z #34 [stable] exporting to image
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8041792Z #34 exporting layers 1.6s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8042578Z #34 exporting manifest sha256:f81e02d9678571295864a1c44c7dbf3ab6e8387925b6aaf7c6925842b96c18ce 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8044316Z #34 exporting config sha256:706beb446210854113574178b5b5d51572043509892d5385e939a0121bd8cd49 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8045889Z #34 exporting attestation manifest sha256:9a47e7ccf1562965fbcfb033d40d67ac16372e655b2e573bcf9119ddaee01d9b 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8047102Z #34 exporting manifest list sha256:2dac26b42758bdfc5a425e6e0659e82c5d2ada14d12f98cf3d843aba0a4cf297 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8048026Z #34 naming to docker.io/library/gatekeeper-local:latest done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8048682Z #34 unpacking to docker.io/library/gatekeeper-local:latest 1.3s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8049172Z #34 DONE 3.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8049385Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8049609Z #35 [bad] resolving provenance for metadata file
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8923035Z #35 DONE 0.1s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8923359Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8923959Z #36 [stable] resolving provenance for metadata file
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8924733Z #36 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8924979Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8926750Z #37 [api] resolving provenance for metadata file
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8927433Z  Image gatekeeper-local Built 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8927969Z  Image gatekeeper-local Built 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8928481Z  Image gatekeeper-local Built 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8928957Z  Image gatekeeper-local Built 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8929426Z  Image gatekeeper-local Built 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8929842Z #37 DONE 0.1s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8930046Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8930370Z #38 [good] resolving provenance for metadata file
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8930930Z #38 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8931135Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8931448Z #39 [slow] resolving provenance for metadata file
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8931915Z #39 DONE 0.1s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.8945012Z  Network gatekeeper-clean_default Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9250829Z  Network gatekeeper-clean_default Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9255761Z  Volume gatekeeper-clean_state Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9268354Z  Volume gatekeeper-clean_state Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9278838Z  Container gatekeeper-clean-slow-1 Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9279502Z  Container gatekeeper-clean-good-1 Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9279905Z  Container gatekeeper-clean-bad-1 Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:27.9280711Z  Container gatekeeper-clean-stable-1 Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.3481949Z  Container gatekeeper-clean-slow-1 Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.3482730Z  Container gatekeeper-clean-bad-1 Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.3491814Z  Container gatekeeper-clean-stable-1 Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.3495535Z  Container gatekeeper-clean-good-1 Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.3496207Z  Container gatekeeper-clean-api-1 Creating 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.3868239Z  Container gatekeeper-clean-api-1 Created 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.4168110Z  Container gatekeeper-clean-stable-1 Starting 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.4169093Z  Container gatekeeper-clean-slow-1 Starting 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.4170229Z  Container gatekeeper-clean-good-1 Starting 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.4171342Z  Container gatekeeper-clean-bad-1 Starting 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.7026606Z  Container gatekeeper-clean-good-1 Started 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.7136328Z  Container gatekeeper-clean-stable-1 Started 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.7170917Z  Container gatekeeper-clean-slow-1 Started 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.7286973Z  Container gatekeeper-clean-bad-1 Started 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:28.7288518Z  Container gatekeeper-clean-api-1 Starting 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:29.1109507Z  Container gatekeeper-clean-api-1 Started 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:29.1688918Z curl: (56) Recv failure: Connection reset by peer
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2050231Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2051092Z                                  Dload  Upload  Total   Spent   Left   Speed
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2051616Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2075406Z   0      0   0      0   0      0      0      0                              0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2076443Z 100     15 100     15   0      0   5696      0                              0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2077574Z 100     15 100     15   0      0   5559      0                              0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:31.2078667Z 100     15 100     15   0      0   5442      0                              0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:32.0254881Z {"status":"ok"}{"status":"ok"}Compose: HTTP proxy rollback/promotion/timeout, React, cookie/CSRF/logout and metrics passed.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.2420161Z WARNING: The directory '/home/gatekeeper/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.5714864Z Collecting pip-audit
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.6610220Z   Downloading pip_audit-2.10.1-py3-none-any.whl.metadata (28 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.7002812Z Collecting CacheControl>=0.13.0 (from CacheControl[filecache]>=0.13.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.7119493Z   Downloading cachecontrol-0.14.4-py3-none-any.whl.metadata (3.1 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.7568758Z Collecting cyclonedx-python-lib<12,>=5 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.7698562Z   Downloading cyclonedx_python_lib-11.12.0-py3-none-any.whl.metadata (6.9 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.7934952Z Collecting packaging>=23.0.0 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.8047046Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.8233486Z Collecting pip-api>=0.0.28 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.8347933Z   Downloading pip_api-0.0.35-py3-none-any.whl.metadata (17 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.8561652Z Collecting pip-requirements-parser>=32.0.0 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.8767330Z   Downloading pip_requirements_parser-32.0.1-py3-none-any.whl.metadata (9.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.9063479Z Collecting requests>=2.31.0 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.9171607Z   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.9536059Z Collecting rich>=12.4 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:33.9713762Z   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.0075922Z Collecting tomli>=2.2.1 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.0234894Z   Downloading tomli-2.5.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.0426808Z Collecting tomli-w>=1.2.0 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.0540696Z   Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.0827022Z Collecting platformdirs>=4.2.0 (from pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.0948420Z   Downloading platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.1157113Z Collecting license-expression<31,>=30 (from cyclonedx-python-lib<12,>=5->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.1267450Z   Downloading license_expression-30.4.4-py3-none-any.whl.metadata (11 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.1498118Z Collecting packageurl-python<2,>=0.11 (from cyclonedx-python-lib<12,>=5->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.1607702Z   Downloading packageurl_python-0.17.6-py3-none-any.whl.metadata (5.1 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.1823297Z Collecting py-serializable<3.0.0,>=2.1.0 (from cyclonedx-python-lib<12,>=5->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.1940733Z   Downloading py_serializable-2.1.0-py3-none-any.whl.metadata (4.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.2148039Z Collecting sortedcontainers<3.0.0,>=2.4.0 (from cyclonedx-python-lib<12,>=5->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.2286810Z   Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.2476229Z Collecting boolean.py>=4.0 (from license-expression<31,>=30->cyclonedx-python-lib<12,>=5->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.2588556Z   Downloading boolean_py-5.0-py3-none-any.whl.metadata (2.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.2779004Z Collecting defusedxml<0.8.0,>=0.7.1 (from py-serializable<3.0.0,>=2.1.0->cyclonedx-python-lib<12,>=5->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.2891160Z   Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.3859286Z Collecting msgpack<2.0.0,>=0.5.2 (from CacheControl>=0.13.0->CacheControl[filecache]>=0.13.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.3980983Z   Downloading msgpack-1.2.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.4291632Z Collecting filelock>=3.8.0 (from CacheControl[filecache]>=0.13.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.4402833Z   Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.4720976Z Collecting pip (from pip-api>=0.0.28->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.4830115Z   Downloading pip-26.2.2-py3-none-any.whl.metadata (4.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.5117873Z Collecting pyparsing (from pip-requirements-parser>=32.0.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.5227671Z   Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.6494807Z Collecting charset_normalizer<4,>=2 (from requests>=2.31.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.6614824Z   Downloading charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.6893382Z Collecting idna<4,>=2.5 (from requests>=2.31.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.7004173Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.7274153Z Collecting urllib3<3,>=1.26 (from requests>=2.31.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.7383427Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.7622797Z Collecting certifi>=2023.5.7 (from requests>=2.31.0->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.7742336Z   Downloading certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.7963163Z Collecting markdown-it-py>=2.2.0 (from rich>=12.4->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.8073030Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.8342499Z Collecting pygments<3.0.0,>=2.13.0 (from rich>=12.4->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.8455410Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.8629992Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12.4->pip-audit)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.8742257Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.8892461Z Downloading pip_audit-2.10.1-py3-none-any.whl (62 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.9092775Z Downloading cyclonedx_python_lib-11.12.0-py3-none-any.whl (529 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.9768254Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 529.5/529.5 kB 9.4 MB/s  0:00:00
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:34.9885124Z Downloading license_expression-30.4.4-py3-none-any.whl (120 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0116246Z Downloading packageurl_python-0.17.6-py3-none-any.whl (36 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0238447Z Downloading py_serializable-2.1.0-py3-none-any.whl (23 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0360178Z Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0484219Z Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0607163Z Downloading boolean_py-5.0-py3-none-any.whl (26 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0765999Z Downloading cachecontrol-0.14.4-py3-none-any.whl (22 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.0887491Z Downloading msgpack-1.2.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (466 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.1401377Z Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.1628117Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.1830265Z Downloading pip_api-0.0.35-py3-none-any.whl (123 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.1999457Z Downloading pip_requirements_parser-32.0.1-py3-none-any.whl (35 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.2130360Z Downloading platformdirs-4.13.5-py3-none-any.whl (32 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.2254377Z Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.2398490Z Downloading charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (254 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.2667367Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.2799973Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.2986960Z Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.3150701Z Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.3443814Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.4058789Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 21.6 MB/s  0:00:00
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.4185763Z Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.4318892Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.4460402Z Downloading tomli-2.5.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (283 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.4697499Z Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.4860879Z Downloading pip-26.2.2-py3-none-any.whl (1.8 MB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.5484151Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 31.1 MB/s  0:00:00
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.5604937Z Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:35.7782690Z Installing collected packages: sortedcontainers, boolean.py, urllib3, tomli-w, tomli, pyparsing, pygments, platformdirs, pip, packaging, packageurl-python, msgpack, mdurl, license-expression, idna, filelock, defusedxml, charset_normalizer, certifi, requests, py-serializable, pip-requirements-parser, pip-api, markdown-it-py, rich, cyclonedx-python-lib, CacheControl, pip-audit
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:38.1770865Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:38.1807908Z Successfully installed CacheControl-0.14.4 boolean.py-5.0 certifi-2026.10.19 charset_normalizer-3.5.2 cyclonedx-python-lib-11.12.0 defusedxml-0.7.1 filelock-4.2.4 idna-3.20 license-expression-30.4.4 markdown-it-py-4.2.0 mdurl-0.1.2 msgpack-1.2.3 packageurl-python-0.17.6 packaging-26.3 pip-26.2.2 pip-api-0.0.35 pip-audit-2.10.1 pip-requirements-parser-32.0.1 platformdirs-4.13.5 py-serializable-2.1.0 pygments-2.21.0 pyparsing-3.3.3 requests-2.34.2 rich-15.0.0 sortedcontainers-2.4.0 tomli-2.5.0 tomli-w-1.2.0 urllib3-2.8.0
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:38.8255947Z /tmp/audit/requests/__init__.py:92: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4533142Z   warnings.warn(
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4534101Z Traceback (most recent call last):
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4537605Z   File "<frozen runpy>", line 203, in _run_module_as_main
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4538634Z   File "<frozen runpy>", line 88, in _run_code
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4539961Z   File "/tmp/audit/pip_audit/__main__.py", line 6, in <module>
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4540736Z     from pip_audit._cli import audit
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4541503Z   File "/tmp/audit/pip_audit/_cli.py", line 18, in <module>
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4542183Z     from pip_audit._audit import AuditOptions, Auditor
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4542735Z   File "/tmp/audit/pip_audit/_audit.py", line 11, in <module>
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4543311Z     from pip_audit._dependency_source import DependencySource
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4544306Z   File "/tmp/audit/pip_audit/_dependency_source/__init__.py", line 13, in <module>
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4544895Z     from .pylock import PyLockSource
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4545679Z   File "/tmp/audit/pip_audit/_dependency_source/pylock.py", line 9, in <module>
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4546208Z     import tomli
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.4546978Z ImportError: /tmp/audit/tomli/__init__.cpython-313-x86_64-linux-gnu.so: failed to map segment from shared object
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:39.6699030Z  Container gatekeeper-clean-api-1 Stopping 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0427490Z  Container gatekeeper-clean-api-1 Stopped 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0428208Z  Container gatekeeper-clean-api-1 Removing 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0520438Z  Container gatekeeper-clean-api-1 Removed 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0521266Z  Container gatekeeper-clean-stable-1 Stopping 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0521918Z  Container gatekeeper-clean-good-1 Stopping 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0526931Z  Container gatekeeper-clean-bad-1 Stopping 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.0527691Z  Container gatekeeper-clean-slow-1 Stopping 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.3855365Z  Container gatekeeper-clean-good-1 Stopped 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.3856466Z  Container gatekeeper-clean-good-1 Removing 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4037943Z  Container gatekeeper-clean-slow-1 Stopped 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4041311Z  Container gatekeeper-clean-slow-1 Removing 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4085590Z  Container gatekeeper-clean-good-1 Removed 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4147431Z  Container gatekeeper-clean-stable-1 Stopped 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4150056Z  Container gatekeeper-clean-stable-1 Removing 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4281892Z  Container gatekeeper-clean-slow-1 Removed 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4365551Z  Container gatekeeper-clean-stable-1 Removed 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4776288Z  Container gatekeeper-clean-bad-1 Stopped 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4777421Z  Container gatekeeper-clean-bad-1 Removing 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4862897Z  Container gatekeeper-clean-bad-1 Removed 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.4872681Z  Network gatekeeper-clean_default Removing 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.5358502Z  Network gatekeeper-clean_default Removed 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:11:40.5424863Z ##[error]Process completed with exit code 1.

@@ -151,7 +151,8 @@ def create_app(path: str | None = None) -> FastAPI:
                 request.headers.get("x-csrf-token", ""), session["csrf"]
             ):
                 raise HTTPException(403, "CSRF proof required")
-        rate("authenticated", 600 if request.method == "GET" else 60)
+        is_read = request.method in ("GET", "HEAD")
+        rate("authenticated-read" if is_read else "authenticated-write", 600 if is_read else 60)
         return session
 
     @app.exception_handler(Conflict)
@@ -245,6 +246,18 @@ def create_app(path: str | None = None) -> FastAPI:
         store.report("analysis", result)
         return result
 
+    @app.post("/api/public/analyze", dependencies=[Depends(auth)])
+    def public_analysis() -> dict[str, Any]:
+        rows = json.loads(Path("fixtures/public/ci.json").read_text())
+        result = {
+            "quarantine": [],
+            "plans": [],
+            "clusters": [dict(row, group=g) for row, g in zip(rows, cluster(rows))],
+            "scope": "Reviewed visible signatures in a small public sample; no root-cause claim",
+        }
+        store.report("public-analysis", result)
+        return result
+
     @app.post("/api/plans", dependencies=[Depends(auth)])
     async def plan(request: Request) -> dict[str, Any]:
         try:
@@ -260,7 +273,13 @@ def create_app(path: str | None = None) -> FastAPI:
         epoch = store.start(body.candidate, body.expected_epoch)
         task = asyncio.create_task(probe(store, epoch, body.candidate))
         tasks.add(task)
-        task.add_done_callback(tasks.discard)
+
+        def completed(task: asyncio.Task) -> None:
+            tasks.discard(task)
+            if not task.cancelled() and task.exception():
+                log.error(json.dumps({"event": "canary_controller_error", "epoch": epoch}))
+
+        task.add_done_callback(completed)
         counters["canaries"] += 1
         return {"epoch": epoch}
 

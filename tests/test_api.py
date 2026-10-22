@@ -112,3 +112,10 @@ def test_incident_join_preserves_unknown_timestamp(client) -> None:
     result = client.get("/api/timeline", headers=headers).json()
     assert result["candidate"] == "a"
     assert result["events"][-1]["id"] == "c"
+
+
+def test_dashboard_polling_does_not_exhaust_write_budget(client) -> None:
+    headers = {"authorization": "Bearer synthetic-machine-token-only-123456789"}
+    for _ in range(65):
+        assert client.get("/api/state", headers=headers).status_code == 200
+    assert client.post("/api/demo/analyze", headers=headers).status_code == 200

@@ -40,8 +40,9 @@ jobs:
           . ./.env
           set +a
           "$GITHUB_WORKSPACE/.venv/bin/python" scripts/compose_smoke.py
-          docker compose exec -T api python -m pip install --target /tmp/audit pip-audit
-          docker compose exec -T -e PYTHONPATH=/tmp/audit api python -m pip_audit --format json > docs/results/container-audit.json
+          docker compose exec -T api python -m gatekeeper.seed
+          docker compose exec -T api python -c 'import importlib.metadata as m; print("\n".join(sorted(d.metadata["Name"]+"=="+d.version for d in m.distributions() if d.metadata["Name"] != "gatekeeper-ci")))' > docs/results/runtime-requirements.txt
+          "$GITHUB_WORKSPACE/.venv/bin/pip-audit" -r docs/results/runtime-requirements.txt --no-deps --disable-pip --format json > docs/results/container-audit.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:

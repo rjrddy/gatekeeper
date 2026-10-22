@@ -1,0 +1,15 @@
+# Optional operator template. Persistent disks require an eligible plan; not deployed.
+services:
+  - type: web
+    name: gatekeeper-api
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    disk: {name: gatekeeper-state, mountPath: /data, sizeGB: 1}
+    envVars:
+      - {key: GK_PASSWORD, generateValue: true}
+      - {key: GK_TOKEN, generateValue: true}
+      - {key: GK_WEBHOOK_SECRET, generateValue: true}
+      - {key: GK_COOKIE_SECURE, value: '1'}
+# This API template alone does not deploy the synthetic upstream fleet. Use Compose
+# on a persistent host or configure GK_*_URL to your own allowlisted services.
