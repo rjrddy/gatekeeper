@@ -1,0 +1,17 @@
+{
+  "project": "Gatekeeper",
+  "url": "http://127.0.0.1:18853",
+  "http_status": 200,
+  "page_errors": [],
+  "desktop_no_overflow": true,
+  "responsive_widths_passed": [
+    390,
+    768,
+    1024
+  ],
+  "evidence_controls_work": true,
+  "video_played": true,
+  "video_duration_seconds": 97.92,
+  "keyboard_focus_reachable": true,
+  "scope": "Local preview of the redesigned public evidence site; saved measurements, no hosted backend claim."
+}

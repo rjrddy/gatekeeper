@@ -1,0 +1,11 @@
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET /console-desktop.png HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET /demo.webm HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET /proof.json HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 01:14:52] code 404, message File not found
+127.0.0.1 - - [22/Oct/2026 01:14:52] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 50334)

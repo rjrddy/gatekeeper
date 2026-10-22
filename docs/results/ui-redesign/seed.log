@@ -1,0 +1,2 @@
+Command: .venv/bin/python scripts/seed.py
+Local synthetic analysis and signed public-metadata replay seeded. No GitHub writes.

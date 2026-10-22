@@ -7,7 +7,7 @@ from pathlib import Path
 from playwright.sync_api import expect, sync_playwright
 
 expected_duration = float(
-    json.loads(Path("docs/results/demo-probe.json").read_text())["format"]["duration"]
+    json.loads(Path("docs/results/ui-redesign/demo-probe.json").read_text())["format"]["duration"]
 )
 url = os.getenv("GK_PUBLIC_URL", "https://gatekeeper-ten-sandy.vercel.app")
 with sync_playwright() as p:

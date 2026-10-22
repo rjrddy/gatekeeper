@@ -151,9 +151,12 @@ function App() {
     <>
       <header>
         <a className="brand" href="/">
-          ⌘ GATEKEEPER
+          <span className="gate-symbol" aria-hidden="true">
+            ↳
+          </span>{" "}
+          GATEKEEPER
         </a>
-        <span className="headerlabel">RELEASE EVIDENCE / OPERATIONS</span>
+        <span className="headerlabel">RELEASE REVIEW OFFICE</span>
         {ready && (
           <button
             className="secondary"
@@ -210,13 +213,14 @@ function App() {
           </form>
         ) : (
           <>
-            <nav className="tabs">
+            <nav className="tabs" aria-label="Release dossier sections">
               {["Release", "CI signals", "Infrastructure", "Audit trail"].map(
                 (t) => (
                   <button
                     key={t}
                     onClick={() => setTab(t)}
                     className={tab === t ? "selected" : ""}
+                    aria-current={tab === t ? "page" : undefined}
                   >
                     {t}
                   </button>

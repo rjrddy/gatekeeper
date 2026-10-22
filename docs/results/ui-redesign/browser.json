@@ -1,0 +1,15 @@
+{
+  "page_errors": [],
+  "elapsed_seconds": 96.61554170807358,
+  "mobile_no_overflow": true,
+  "bad_candidate_rolled_back": true,
+  "good_candidate_promoted": true,
+  "timeout_rolled_back_to_promoted_candidate": true,
+  "live_routed_value": 14,
+  "signature_policy_blocked_real_advisories": true,
+  "synthetic_quarantine_proposals": 24,
+  "public_excerpts_inspected": 4,
+  "risky_plans": 6,
+  "reload_persisted": true,
+  "scope": "Actual local API and four HTTP upstreams; Vercel evidence site is separate."
+}

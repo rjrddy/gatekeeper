@@ -1,0 +1,9 @@
+{
+  "project": "Gatekeeper",
+  "real_service_browser_flow": "pass",
+  "desktop_and_phone_layout": "pass",
+  "recording_seconds": 97.92,
+  "recording_gate_passed": true,
+  "historical_benchmarks_rerun": false,
+  "publication": "pending explicit approval"
+}

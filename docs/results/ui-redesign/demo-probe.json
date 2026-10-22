@@ -1,0 +1,76 @@
+{
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "vp9",
+            "codec_long_name": "Google VP9",
+            "profile": "Profile 0",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1440,
+            "height": 1000,
+            "coded_width": 1440,
+            "coded_height": 1000,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "36:25",
+            "pix_fmt": "yuv420p",
+            "level": -99,
+            "color_range": "tv",
+            "chroma_location": "center",
+            "field_order": "progressive",
+            "refs": 1,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "language": "eng",
+                "ENCODER": "Lavc61.3.100 libvpx-vp9",
+                "DURATION": "00:01:37.920000000"
+            }
+        }
+    ],
+    "format": {
+        "filename": "/Users/rajreddy/dev/outreach/flagships/gatekeeper/docs/results/ui-redesign/demo.webm",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "matroska,webm",
+        "format_long_name": "Matroska / WebM",
+        "start_time": "0.000000",
+        "duration": "97.920000",
+        "size": "10782772",
+        "bit_rate": "880945",
+        "probe_score": 100,
+        "tags": {
+            "creation_time": "2026-10-22T06:09:25.274000Z",
+            "ENCODER": "Lavf61.1.100"
+        }
+    }
+}
