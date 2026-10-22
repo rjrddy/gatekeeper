@@ -5,14 +5,14 @@ Status: **partial**. The local hard core, full stack and recorded measurements w
 | Required check | Evidence | Status |
 | --- | --- | --- |
 | Hard core written and explained | Rust verifier, transactional event store, real HTTP proxy, [design](DESIGN.md), [ADRs](adr/) | pass for stated single-host scope |
-| Fresh-clone one-command runtime | Actual Linux Compose smoke, independent service containers, auth and proxy assertions in CI | final revision verification pending |
+| Fresh-clone one-command runtime | [Independent native clone](results/fresh-clone.log); the [Compose CI gate](https://github.com/rjrddy/gatekeeper/actions/workflows/ci.yml) exercises separate service containers, auth, proxy assertions and the packaged seed | native pass; Compose result in linked run |
 | UI shows live behavior | [browser assertions](results/browser.json), [recording](results/demo.webm), [recording probe](results/demo-probe.json) | pass locally |
 | Unit, integration and property/chaos tests | [full check output](results/final-checks.log), [actual process recovery](results/canary.json) | pass |
 | Measured benchmark evidence saved | [analysis](results/analysis.json), [canary](results/canary.json), [supply](results/supply.json) | pass |
 | A demonstrated caught failure | [signed vulnerability block](results/supply/verdict.json), [tamper rejection](results/supply/tamper-rejected.json) | pass |
 | ADRs | [durability](adr/001-local-durability.md), [comparable evidence](adr/002-evidence-not-cause.md), [signing](adr/003-signatures-and-policy.md), [plan scope](adr/004-plan-review-boundaries.md), [hosting/auth](adr/005-hosting-and-auth.md) | pass |
 | Interview and drill | [INTERVIEW](../INTERVIEW.md), [DRILL](DRILL.md) | pass |
-| CI green | Local checks pass; initial CI passed core/scans/process chaos and Compose behavior, then failed loading the audit tool on noexec tmpfs; audit moved to runner | final revision verification pending |
+| CI green | Every push runs native checks, dependency audits, actual process chaos, fresh scanners and independent-clone Compose; review the run for the exact commit | [![CI](https://github.com/rjrddy/gatekeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/rjrddy/gatekeeper/actions/workflows/ci.yml) |
 | No unmeasured claims | Generated README links saved measurements and separates synthetic/public scopes | pass for documented scope |
 | Live persistent deployment | Public Vercel evidence page; full runtime remains local Compose | partial |
 | Real GitHub App and PR workflow | Manifest, installation-token helper, exact-body webhook authentication, signed local replay of public workflow metadata, comment previews | partial: not installed; no live JUnit ingestion or comment posting |
@@ -29,6 +29,7 @@ The HTTP campaign uses real independently running local services, including proc
 
 - Initial verifier rejected Syft file components without versions: [raw failure](results/initial-syft-shape-failure.log). Package identity validation now excludes file components and rejects file-only evidence. The real scanner benchmark passes afterward.
 - Browser polling exhausted a shared write rate budget: [raw failure](results/initial-browser-rate-failure.log). Read/write budgets are separate; a regression test exercises polling before a write, and the completed recording passes.
+- Docker initially excluded the new reviewed fixtures from its build context: [raw packaging failure](results/initial-fixture-packaging-failure.log). The exclusion is removed so the authenticated public-excerpt analysis is packaged with the runtime.
 - The container audit tool could not load a native library from hardened noexec tmpfs: [raw CI log](results/initial-compose-ci-failure.log). CI now exports exact installed package versions and audits them on the runner. Runtime mount hardening is retained.
 
 ## Demo and rerun
