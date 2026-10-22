@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=84"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "gatekeeper-ci"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["fastapi>=0.156,<1", "uvicorn>=0.54,<1", "httpx>=0.28,<1", "cryptography>=46", "PyJWT>=2.10,<3"]
+[project.optional-dependencies]
+dev = ["pytest>=9,<10", "ruff==0.17.1", "hypothesis>=6", "playwright>=1.64,<2", "pip-audit>=2.10"]
+[tool.setuptools]
+packages = ["gatekeeper"]
+[tool.ruff]
+line-length = 100
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+[tool.ruff.lint.per-file-ignores]
+"scripts/render_readme.py" = ["E501"]

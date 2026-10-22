@@ -1,0 +1,17 @@
+.cache/
+.venv/
+.env
+.env.*
+!.env.example
+.vercel/
+data/
+bin/
+agent/target/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+apps/web/node_modules/
+apps/web/dist/
+deploy/site/dist/
+docs/results/recordings/
