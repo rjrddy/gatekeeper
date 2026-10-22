@@ -5,5 +5,13 @@
   "recording_seconds": 97.92,
   "recording_gate_passed": true,
   "historical_benchmarks_rerun": false,
-  "publication": "pending explicit approval"
+  "publication": "pending explicit approval",
+  "fresh_clone_frontend_check": {
+    "name": "Gatekeeper",
+    "pass": true,
+    "source_commit": "555395074569d4b831ca82f2eb9be287d8ae4f3b",
+    "clone": "/tmp/flagship-ui-clones-q6zy8d1a/gatekeeper",
+    "scope": "Independent frontend dependency install, lint, build; public evidence package where present. No new full backend container claim."
+  },
+  "full_backend_fresh_clone_rerun": false
 }
