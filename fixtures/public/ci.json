@@ -1,0 +1,42 @@
+[
+  {
+    "repo": "pytest-dev/pytest",
+    "run_id": 39602764127,
+    "sha": "4dab98b0bfe437474241ce86119df1ba81a78cf3",
+    "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+    "job": "build (ubuntu-py310-xdist)",
+    "log": "E           AssertionError: child failure",
+    "label": "subtest_child_assertion",
+    "review": "Visible AssertionError: child failure; not a root-cause diagnosis."
+  },
+  {
+    "repo": "pytest-dev/pytest",
+    "run_id": 39602764127,
+    "sha": "4dab98b0bfe437474241ce86119df1ba81a78cf3",
+    "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+    "job": "build (ubuntu-py310-lsof-numpy-pexpect)",
+    "log": "E           AssertionError: child failure",
+    "label": "subtest_child_assertion",
+    "review": "Visible AssertionError: child failure; not a root-cause diagnosis."
+  },
+  {
+    "repo": "pytest-dev/pytest",
+    "run_id": 39602764127,
+    "sha": "4dab98b0bfe437474241ce86119df1ba81a78cf3",
+    "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+    "job": "build (macos-py310)",
+    "log": "E           AssertionError: child failure",
+    "label": "subtest_child_assertion",
+    "review": "Visible AssertionError: child failure; not a root-cause diagnosis."
+  },
+  {
+    "repo": "pytest-dev/pytest",
+    "run_id": 39405826447,
+    "sha": "21a6d405798d06a4212246dd1249cd338c647a1c",
+    "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39405826447",
+    "job": "build (macos-py312)",
+    "log": "  cause: dns error\n  cause: failed to lookup address information: nodename nor servname provided, or not known",
+    "label": "dns_resolution",
+    "review": "Visible resolver failure; no claim about ultimate network cause."
+  }
+]
