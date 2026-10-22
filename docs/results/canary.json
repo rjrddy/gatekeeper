@@ -1,0 +1,133 @@
+{
+  "initial": {
+    "body": {
+      "value": 14
+    },
+    "upstream": "stable"
+  },
+  "canaries": [
+    {
+      "candidate": "candidate-bad",
+      "state": {
+        "singleton": 1,
+        "epoch": 1,
+        "state": "rolled_back",
+        "active": "stable",
+        "stable": "stable",
+        "candidate": "candidate-bad",
+        "last_result": "{\"rows\": [{\"input\": 0, \"matches\": false, \"stable\": {\"value\": 0}, \"candidate\": {\"value\": 1}}], \"passed\": false, \"elapsed_ms\": 10.575124993920326, \"candidate\": \"candidate-bad\"}"
+      },
+      "proxy_after": {
+        "body": {
+          "value": 14
+        },
+        "upstream": "stable"
+      },
+      "observed_seconds": 0.04610083298757672
+    },
+    {
+      "candidate": "candidate-good",
+      "state": {
+        "singleton": 1,
+        "epoch": 2,
+        "state": "promoted",
+        "active": "candidate-good",
+        "stable": "candidate-good",
+        "candidate": "candidate-good",
+        "last_result": "{\"rows\": [{\"input\": 0, \"matches\": true, \"stable\": {\"value\": 0}, \"candidate\": {\"value\": 0}}, {\"input\": 1, \"matches\": true, \"stable\": {\"value\": 2}, \"candidate\": {\"value\": 2}}, {\"input\": 2, \"matches\": true, \"stable\": {\"value\": 4}, \"candidate\": {\"value\": 4}}, {\"input\": 3, \"matches\": true, \"stable\": {\"value\": 6}, \"candidate\": {\"value\": 6}}, {\"input\": 4, \"matches\": true, \"stable\": {\"value\": 8}, \"candidate\": {\"value\": 8}}, {\"input\": 5, \"matches\": true, \"stable\": {\"value\": 10}, \"candidate\": {\"value\": 10}}, {\"input\": 6, \"matches\": true, \"stable\": {\"value\": 12}, \"candidate\": {\"value\": 12}}, {\"input\": 7, \"matches\": true, \"stable\": {\"value\": 14}, \"candidate\": {\"value\": 14}}, {\"input\": 8, \"matches\": true, \"stable\": {\"value\": 16}, \"candidate\": {\"value\": 16}}, {\"input\": 9, \"matches\": true, \"stable\": {\"value\": 18}, \"candidate\": {\"value\": 18}}, {\"input\": 10, \"matches\": true, \"stable\": {\"value\": 20}, \"candidate\": {\"value\": 20}}, {\"input\": 11, \"matches\": true, \"stable\": {\"value\": 22}, \"candidate\": {\"value\": 22}}], \"passed\": true, \"elapsed_ms\": 36.37887502554804, \"candidate\": \"candidate-good\"}"
+      },
+      "proxy_after": {
+        "body": {
+          "value": 14
+        },
+        "upstream": "candidate-good"
+      },
+      "observed_seconds": 0.052215709001757205
+    },
+    {
+      "candidate": "candidate-slow",
+      "state": {
+        "singleton": 1,
+        "epoch": 3,
+        "state": "rolled_back",
+        "active": "candidate-good",
+        "stable": "candidate-good",
+        "candidate": "candidate-slow",
+        "last_result": "{\"rows\": [{\"input\": 0, \"matches\": false, \"error\": \"candidate/reference unavailable or invalid\"}], \"passed\": false, \"elapsed_ms\": 259.2717909719795, \"candidate\": \"candidate-slow\"}"
+      },
+      "proxy_after": {
+        "body": {
+          "value": 14
+        },
+        "upstream": "candidate-good"
+      },
+      "observed_seconds": 0.272105542011559
+    }
+  ],
+  "recovery": {
+    "fault": "SIGKILL API while probing; new process, same SQLite file",
+    "state": {
+      "singleton": 1,
+      "epoch": 5,
+      "state": "recovered",
+      "active": "candidate-good",
+      "stable": "candidate-good",
+      "candidate": "candidate-slow",
+      "last_result": null
+    },
+    "proxy_after": {
+      "body": {
+        "value": 14
+      },
+      "upstream": "candidate-good"
+    }
+  },
+  "scope": "Actual local HTTP behavior; x=0..11, per-upstream timeout .25s. No fleet claim.",
+  "public_metadata_replays": [
+    {
+      "run_id": 39602764127,
+      "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "first": {
+        "accepted": true
+      },
+      "replay": {
+        "accepted": false
+      },
+      "changed_bytes_status": 401
+    },
+    {
+      "run_id": 39476943969,
+      "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39476943969",
+      "first": {
+        "accepted": true
+      },
+      "replay": {
+        "accepted": false
+      },
+      "changed_bytes_status": 401
+    },
+    {
+      "run_id": 39405826447,
+      "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39405826447",
+      "first": {
+        "accepted": true
+      },
+      "replay": {
+        "accepted": false
+      },
+      "changed_bytes_status": 401
+    },
+    {
+      "run_id": 39378379197,
+      "source_url": "https://github.com/pytest-dev/pytest/actions/runs/39378379197",
+      "first": {
+        "accepted": true
+      },
+      "replay": {
+        "accepted": false
+      },
+      "changed_bytes_status": 401
+    }
+  ],
+  "audit_events": 12
+}

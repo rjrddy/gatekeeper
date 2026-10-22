@@ -1,0 +1,16 @@
+{
+  "approved": false,
+  "artifact_sha256": "4ce22f4c4aae9a0b38a359a76487071810fb4b6f51d1965ea5f1773b40278218",
+  "blocked": [
+    "GHSA-q2q7-5pp4-w6pg: High",
+    "GHSA-38jv-5279-wg99: High",
+    "GHSA-v845-jxx5-vc9f: High",
+    "GHSA-2xpw-w6gg-jr37: High",
+    "GHSA-gm62-xv2j-4w53: High",
+    "GHSA-vxq7-64xx-v4gw: High",
+    "GHSA-qccp-gfcp-xxvc: High",
+    "GHSA-8988-9cw3-xx77: High"
+  ],
+  "components": 2,
+  "vulnerability_matches": 11
+}

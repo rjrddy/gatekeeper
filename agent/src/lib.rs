@@ -86,10 +86,14 @@ pub fn verify(
         .get("components")
         .and_then(Value::as_array)
         .context("missing component list")?;
-    if components.is_empty() {
+    let packages: Vec<_> = components
+        .iter()
+        .filter(|c| c.get("type").and_then(Value::as_str) != Some("file"))
+        .collect();
+    if packages.is_empty() {
         bail!("empty SBOM is not approval evidence")
     }
-    for component in components {
+    for component in packages {
         if component.get("name").and_then(Value::as_str).is_none()
             || component.get("version").and_then(Value::as_str).is_none()
         {

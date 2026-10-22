@@ -1,0 +1,221 @@
+{
+  "seed": 42,
+  "flakes": {
+    "observations": 3856,
+    "truth": 24,
+    "proposals": 24,
+    "precision": 1.0,
+    "recall": 1.0,
+    "false_positives": [],
+    "missed": []
+  },
+  "synthetic_clusters": {
+    "samples": 80,
+    "clusters": 10,
+    "purity": 1.0,
+    "pairwise_precision": 1.0,
+    "pairwise_recall": 1.0,
+    "true_pairs": 280,
+    "false_pairs": 0,
+    "missed_pairs": 0
+  },
+  "public_clusters": {
+    "samples": 4,
+    "clusters": 2,
+    "purity": 1.0,
+    "pairwise_precision": 1.0,
+    "pairwise_recall": 1.0,
+    "true_pairs": 3,
+    "false_pairs": 0,
+    "missed_pairs": 0
+  },
+  "public_sources": [
+    {
+      "run_id": 39602764127,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "label": "subtest_child_assertion",
+      "cluster": 1
+    },
+    {
+      "run_id": 39602764127,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "label": "subtest_child_assertion",
+      "cluster": 1
+    },
+    {
+      "run_id": 39602764127,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "label": "subtest_child_assertion",
+      "cluster": 1
+    },
+    {
+      "run_id": 39405826447,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39405826447",
+      "label": "dns_resolution",
+      "cluster": 0
+    }
+  ],
+  "plans": {
+    "samples": 10,
+    "risky": 6,
+    "caught": 6,
+    "false_positives": 0,
+    "findings": [
+      {
+        "blocked": true,
+        "findings": [
+          {
+            "address": "aws_db_instance.fixture_0",
+            "type": "aws_db_instance",
+            "reasons": [
+              "destructive action or replacement"
+            ],
+            "affected": [
+              "aws_db_instance.fixture_0",
+              "aws_instance.dependent_0"
+            ],
+            "affected_count": 2
+          }
+        ],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": true,
+        "findings": [
+          {
+            "address": "aws_iam_policy.fixture_1",
+            "type": "aws_iam_policy",
+            "reasons": [
+              "IAM change requires review"
+            ],
+            "affected": [
+              "aws_iam_policy.fixture_1",
+              "aws_instance.dependent_1"
+            ],
+            "affected_count": 2
+          }
+        ],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": true,
+        "findings": [
+          {
+            "address": "aws_security_group.fixture_2",
+            "type": "aws_security_group",
+            "reasons": [
+              "public network ingress"
+            ],
+            "affected": [
+              "aws_instance.dependent_2",
+              "aws_security_group.fixture_2"
+            ],
+            "affected_count": 2
+          }
+        ],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": true,
+        "findings": [
+          {
+            "address": "aws_s3_bucket.fixture_3",
+            "type": "aws_s3_bucket",
+            "reasons": [
+              "destructive action or replacement"
+            ],
+            "affected": [
+              "aws_instance.dependent_3",
+              "aws_s3_bucket.fixture_3"
+            ],
+            "affected_count": 2
+          }
+        ],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": true,
+        "findings": [
+          {
+            "address": "aws_instance.fixture_4",
+            "type": "aws_instance",
+            "reasons": [
+              "destructive action or replacement"
+            ],
+            "affected": [
+              "aws_instance.dependent_4",
+              "aws_instance.fixture_4"
+            ],
+            "affected_count": 2
+          }
+        ],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": true,
+        "findings": [
+          {
+            "address": "aws_iam_role.fixture_5",
+            "type": "aws_iam_role",
+            "reasons": [
+              "IAM change requires review",
+              "unknown IAM values"
+            ],
+            "affected": [
+              "aws_iam_role.fixture_5",
+              "aws_instance.dependent_5"
+            ],
+            "affected_count": 2
+          }
+        ],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": false,
+        "findings": [],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": false,
+        "findings": [],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": false,
+        "findings": [],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      },
+      {
+        "blocked": false,
+        "findings": [],
+        "scope": "AWS root-module heuristic; not Terraform apply or causal impact proof"
+      }
+    ]
+  },
+  "timeline": {
+    "events": [
+      {
+        "id": "deploy",
+        "kind": "deploy",
+        "component": "demo",
+        "at": 10
+      },
+      {
+        "id": "alert",
+        "kind": "alert",
+        "component": "demo",
+        "at": 12
+      },
+      {
+        "id": "log-unknown",
+        "kind": "log",
+        "component": "demo",
+        "at": null
+      }
+    ],
+    "candidate": "deploy",
+    "interpretation": "temporal correlation only; unknown timestamps retained"
+  },
+  "elapsed_seconds": 0.01787158299703151,
+  "scope": "Seeded injection accuracy is not public CI accuracy. Public sample selected by hand."
+}

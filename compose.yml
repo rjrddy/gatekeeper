@@ -1,0 +1,44 @@
+x-service: &service
+  image: gatekeeper-local
+  build: .
+  restart: unless-stopped
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+services:
+  api:
+    <<: *service
+    env_file: .env
+    environment:
+      GK_EVIDENCE: /evidence
+      GK_STABLE_URL: http://stable:8080
+      GK_CANDIDATE_GOOD_URL: http://good:8080
+      GK_CANDIDATE_BAD_URL: http://bad:8080
+      GK_CANDIDATE_SLOW_URL: http://slow:8080
+    ports: ["127.0.0.1:8082:8080"]
+    volumes:
+      - state:/data
+      - ./docs/results/supply:/evidence:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health',timeout=3)"]
+      interval: 3s
+      timeout: 4s
+      retries: 20
+    depends_on: [stable, good, bad, slow]
+  stable:
+    <<: *service
+    command: ["uvicorn", "gatekeeper.demo_service:app", "--host", "0.0.0.0", "--port", "8080"]
+  good:
+    <<: *service
+    command: ["uvicorn", "gatekeeper.demo_service:app", "--host", "0.0.0.0", "--port", "8080"]
+  bad:
+    <<: *service
+    environment: {GK_SERVICE_MODE: bad}
+    command: ["uvicorn", "gatekeeper.demo_service:app", "--host", "0.0.0.0", "--port", "8080"]
+  slow:
+    <<: *service
+    environment: {GK_SERVICE_MODE: slow}
+    command: ["uvicorn", "gatekeeper.demo_service:app", "--host", "0.0.0.0", "--port", "8080"]
+volumes:
+  state:

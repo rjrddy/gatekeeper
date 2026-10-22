@@ -1,0 +1,6 @@
+.venv/bin/ruff check gatekeeper scripts tests
+All checks passed!
+.venv/bin/ruff format --check gatekeeper scripts tests
+18 files already formatted
+/Users/rajreddy/dev/outreach/flagships/gatekeeper/.cache/cargo/bin/cargo fmt --manifest-path agent/Cargo.toml --check
+/Users/rajreddy/dev/outreach/flagships/gatekeeper/.cache/cargo/bin/cargo clippy --locked --manifest-path agent/Cargo.toml --all-targets -- -D warnings

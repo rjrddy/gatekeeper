@@ -1,0 +1,131 @@
+INFO:     Started server process [57225]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18301 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62097 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [57235]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18302 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62103 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [57246]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18303 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62108 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [57248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18304 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62114 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [57252]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18300 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62121 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62123 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /demo/value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62124 - "GET /value?x=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62125 - "GET /value?x=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62126 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /demo/value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:62128 - "GET /value?x=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62127 - "GET /value?x=11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /value?x=11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /demo/value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62130 - "GET /value?x=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /demo/value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "POST /api/canary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62133 - "GET /value?x=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62122 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Started server process [57256]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18300 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62140 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62142 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "GET /demo/value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62143 - "GET /value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "GET /demo/value?x=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "POST /api/github/webhook HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62141 - "POST /api/demo/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62141 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Waiting for background tasks to complete. (CTRL+C to force quit)
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57235]
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57246]
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57225]
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57256]
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57248]

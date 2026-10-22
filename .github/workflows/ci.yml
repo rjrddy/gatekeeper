@@ -1,0 +1,49 @@
+name: CI
+on: [push, pull_request]
+permissions: {contents: read}
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.13'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Toolchain and dependencies
+        run: |
+          rustup show
+          make setup
+          cargo install cargo-audit --locked
+      - run: make build lint test
+      - run: make scan
+      - name: Local process chaos and accuracy
+        run: |
+          .venv/bin/python scripts/bench_analysis.py
+          .venv/bin/python scripts/bench_canary.py
+      - name: Real scanner and Rust gate
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          .venv/bin/python scripts/tools.py
+          .venv/bin/python scripts/bench_supply.py
+      - name: Fresh clone Compose with independent HTTP services
+        run: |
+          git clone --no-local . /tmp/gatekeeper-clean
+          cd /tmp/gatekeeper-clean
+          python scripts/configure.py
+          mkdir -p docs/results
+          trap 'docker compose logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"; docker compose down' EXIT
+          docker compose up --build -d
+          for i in $(seq 1 120); do curl -fsS http://localhost:8082/health && break; sleep 2; done
+          curl --fail http://localhost:8082/health
+          set -a
+          . ./.env
+          set +a
+          "$GITHUB_WORKSPACE/.venv/bin/python" scripts/compose_smoke.py
+          docker compose exec -T api python -m pip install --target /tmp/audit pip-audit
+          docker compose exec -T -e PYTHONPATH=/tmp/audit api python -m pip_audit --format json > docs/results/container-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gatekeeper-ci-evidence
+          path: docs/results/

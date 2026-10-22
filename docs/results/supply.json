@@ -1,0 +1,45 @@
+{
+  "scope": "Fresh package-metadata fixture scan; no vulnerable library code installed. Not a scan of the entire application or a reproducible-build claim.",
+  "syft_version": "{\n \"application\": \"syft\",\n \"buildDate\": \"2026-10-19T18:54:46Z\",\n \"compiler\": \"gc\",\n \"gitCommit\": \"f15c3343e29dfb20cf6d82c820e7090b49808c96\",\n \"gitDescription\": \"v1.55.0\",\n \"goVersion\": \"go1.26.8\",\n \"platform\": \"darwin/arm64\",\n \"schemaVersion\": \"16.1.11\",\n \"version\": \"1.55.0\"\n}\n",
+  "grype_version": "{\n \"application\": \"grype\",\n \"buildDate\": \"2026-10-19T20:26:34Z\",\n \"compiler\": \"gc\",\n \"gitCommit\": \"afe2742527d98d822da06c9f32eed86fe3d193e0\",\n \"gitDescription\": \"v0.121.0\",\n \"goVersion\": \"go1.26.8\",\n \"platform\": \"darwin/arm64\",\n \"supportedDbSchema\": 6,\n \"syftVersion\": \"v1.55.0\",\n \"version\": \"0.121.0\"\n}\n",
+  "commit": "b653511a930b4c30d7823ac3eb53c43f7cbe02a7",
+  "fixtures": {
+    "bad": {
+      "version": "1.26.4",
+      "exit_code": 1,
+      "tamper_exit_code": 2,
+      "verdict": {
+        "approved": false,
+        "artifact_sha256": "4ce22f4c4aae9a0b38a359a76487071810fb4b6f51d1965ea5f1773b40278218",
+        "blocked": [
+          "GHSA-q2q7-5pp4-w6pg: High",
+          "GHSA-38jv-5279-wg99: High",
+          "GHSA-v845-jxx5-vc9f: High",
+          "GHSA-2xpw-w6gg-jr37: High",
+          "GHSA-gm62-xv2j-4w53: High",
+          "GHSA-vxq7-64xx-v4gw: High",
+          "GHSA-qccp-gfcp-xxvc: High",
+          "GHSA-8988-9cw3-xx77: High"
+        ],
+        "components": 2,
+        "vulnerability_matches": 11
+      },
+      "elapsed_seconds": 3.694418166996911,
+      "sbom_sha256": "357c34573dc388becf195e8ad9b15cb1a1fff2f4ba1a3471054a2ffc3b49f4e6"
+    },
+    "control": {
+      "version": "2.8.0",
+      "exit_code": 0,
+      "tamper_exit_code": 2,
+      "verdict": {
+        "approved": true,
+        "artifact_sha256": "a53eb689fc32e2efd89dc269c869873da56183270b240e897be5a63febca7b9e",
+        "blocked": [],
+        "components": 2,
+        "vulnerability_matches": 0
+      },
+      "elapsed_seconds": 3.1645464580506086,
+      "sbom_sha256": "e7c4653dfe5659578498c83d47b260787e0bdbd48ce260e5356a107a8d178066"
+    }
+  }
+}

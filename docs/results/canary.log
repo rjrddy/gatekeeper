@@ -1,0 +1,9 @@
+{
+  "canary_states": [
+    "rolled_back",
+    "promoted",
+    "rolled_back"
+  ],
+  "restart": "recovered",
+  "public_metadata_runs": 4
+}

@@ -1,0 +1,60 @@
+{
+  "seed": 42,
+  "flakes": {
+    "observations": 3856,
+    "truth": 24,
+    "proposals": 24,
+    "precision": 1.0,
+    "recall": 1.0,
+    "false_positives": [],
+    "missed": []
+  },
+  "synthetic_clusters": {
+    "samples": 80,
+    "clusters": 10,
+    "purity": 1.0,
+    "pairwise_precision": 1.0,
+    "pairwise_recall": 1.0,
+    "true_pairs": 280,
+    "false_pairs": 0,
+    "missed_pairs": 0
+  },
+  "public_clusters": {
+    "samples": 4,
+    "clusters": 2,
+    "purity": 1.0,
+    "pairwise_precision": 1.0,
+    "pairwise_recall": 1.0,
+    "true_pairs": 3,
+    "false_pairs": 0,
+    "missed_pairs": 0
+  },
+  "public_sources": [
+    {
+      "run_id": 39602764127,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "label": "subtest_child_assertion",
+      "cluster": 1
+    },
+    {
+      "run_id": 39602764127,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "label": "subtest_child_assertion",
+      "cluster": 1
+    },
+    {
+      "run_id": 39602764127,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39602764127",
+      "label": "subtest_child_assertion",
+      "cluster": 1
+    },
+    {
+      "run_id": 39405826447,
+      "url": "https://github.com/pytest-dev/pytest/actions/runs/39405826447",
+      "label": "dns_resolution",
+      "cluster": 0
+    }
+  ],
+  "elapsed_seconds": 0.01787158299703151,
+  "scope": "Seeded injection accuracy is not public CI accuracy. Public sample selected by hand."
+}

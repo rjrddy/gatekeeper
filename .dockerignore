@@ -1,0 +1,13 @@
+.git
+.cache
+.venv
+.env
+.env.*
+data
+bin
+agent/target
+apps/web/node_modules
+apps/web/dist
+docs
+fixtures
+__pycache__

@@ -99,3 +99,16 @@ def test_proxy_unavailable_is_visible(client: TestClient) -> None:
         headers={"Authorization": "Bearer synthetic-machine-token-only-123456789"},
     )
     assert response.status_code == 503
+
+
+def test_incident_join_preserves_unknown_timestamp(client) -> None:
+    headers = {"authorization": "Bearer synthetic-machine-token-only-123456789"}
+    for row in [
+        {"id": "a", "kind": "deploy", "at": 1, "component": "fixture", "summary": "release"},
+        {"id": "b", "kind": "alert", "at": 2, "component": "fixture", "summary": "error rate"},
+        {"id": "c", "kind": "log", "at": None, "component": "fixture", "summary": "missing clock"},
+    ]:
+        assert client.post("/api/events", json=row, headers=headers).status_code == 200
+    result = client.get("/api/timeline", headers=headers).json()
+    assert result["candidate"] == "a"
+    assert result["events"][-1]["id"] == "c"

@@ -1,0 +1,1 @@
+{"version":1,"disable_existing_loggers":false,"formatters":{"plain":{"format":"%(message)s"}},"handlers":{"console":{"class":"logging.StreamHandler","formatter":"plain","stream":"ext://sys.stdout"}},"root":{"level":"INFO","handlers":["console"]},"loggers":{"uvicorn.access":{"level":"WARNING"}}}
