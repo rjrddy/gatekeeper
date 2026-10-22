@@ -1,0 +1,1 @@
+{"name":"Gatekeeper CI evidence","url":"https://github.com/rjrddy/gatekeeper","hook_attributes":{"url":"https://CONFIGURE-HOST/api/github/webhook","active":true},"redirect_url":"https://CONFIGURE-HOST/app/setup","public":false,"default_permissions":{"actions":"read","contents":"read","pull_requests":"write"},"default_events":["workflow_run"]}
