@@ -1,0 +1,418 @@
+Cloning into '/tmp/gatekeeper-native.x40zUC/repo'...
+python3 -m venv .venv
+.venv/bin/pip install --upgrade pip==26.2.2 setuptools==84.0.0
+Collecting pip==26.2.2
+  Using cached pip-26.2.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting setuptools==84.0.0
+  Using cached setuptools-84.0.0-py3-none-any.whl.metadata (6.6 kB)
+Using cached pip-26.2.2-py3-none-any.whl (1.8 MB)
+Using cached setuptools-84.0.0-py3-none-any.whl (818 kB)
+Installing collected packages: setuptools, pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.0
+    Uninstalling pip-25.0:
+      Successfully uninstalled pip-25.0
+Successfully installed pip-26.2.2 setuptools-84.0.0
+.venv/bin/pip install -e '.[dev]'
+Obtaining file:///private/tmp/gatekeeper-native.x40zUC/repo
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting fastapi<1,>=0.156 (from gatekeeper-ci==0.1.0)
+  Using cached fastapi-0.159.1-py3-none-any.whl.metadata (26 kB)
+Collecting uvicorn<1,>=0.54 (from gatekeeper-ci==0.1.0)
+  Using cached uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting httpx<1,>=0.28 (from gatekeeper-ci==0.1.0)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting cryptography>=46 (from gatekeeper-ci==0.1.0)
+  Using cached cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl.metadata (4.4 kB)
+Collecting PyJWT<3,>=2.10 (from gatekeeper-ci==0.1.0)
+  Using cached pyjwt-2.15.1-py3-none-any.whl.metadata (3.5 kB)
+Collecting pytest<10,>=9 (from gatekeeper-ci==0.1.0)
+  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting ruff==0.17.1 (from gatekeeper-ci==0.1.0)
+  Using cached ruff-0.17.1-py3-none-macosx_11_0_arm64.whl.metadata (20 kB)
+Collecting hypothesis>=6 (from gatekeeper-ci==0.1.0)
+  Using cached hypothesis-6.170.5-cp313-cp313-macosx_11_0_arm64.whl.metadata (5.6 kB)
+Collecting playwright<2,>=1.64 (from gatekeeper-ci==0.1.0)
+  Using cached playwright-1.64.0-py3-none-macosx_11_0_arm64.whl.metadata (3.3 kB)
+Collecting pip-audit>=2.10 (from gatekeeper-ci==0.1.0)
+  Using cached pip_audit-2.10.1-py3-none-any.whl.metadata (28 kB)
+Collecting starlette>=0.46.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic>=2.9.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting opentelemetry-api>=1.44.0 (from fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting anyio (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+  Using cached anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+  Using cached certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.28->gatekeeper-ci==0.1.0)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting pyee<15,>=13 (from playwright<2,>=1.64->gatekeeper-ci==0.1.0)
+  Using cached pyee-14.0.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting greenlet<4.0.0,>=3.1.1 (from playwright<2,>=1.64->gatekeeper-ci==0.1.0)
+  Using cached greenlet-3.5.6-cp313-cp313-macosx_11_0_universal2.whl.metadata (3.8 kB)
+Collecting iniconfig>=1.0.1 (from pytest<10,>=9->gatekeeper-ci==0.1.0)
+  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=22 (from pytest<10,>=9->gatekeeper-ci==0.1.0)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest<10,>=9->gatekeeper-ci==0.1.0)
+  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments>=2.7.2 (from pytest<10,>=9->gatekeeper-ci==0.1.0)
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting click>=7.0 (from uvicorn<1,>=0.54->gatekeeper-ci==0.1.0)
+  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting cffi>=2.0.0 (from cryptography>=46->gatekeeper-ci==0.1.0)
+  Using cached cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=46->gatekeeper-ci==0.1.0)
+  Using cached pycparser-3.11-py3-none-any.whl.metadata (8.2 kB)
+Collecting sortedcontainers<3.0.0,>=2.1.0 (from hypothesis>=6->gatekeeper-ci==0.1.0)
+  Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting CacheControl>=0.13.0 (from CacheControl[filecache]>=0.13.0->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached cachecontrol-0.14.4-py3-none-any.whl.metadata (3.1 kB)
+Collecting cyclonedx-python-lib<12,>=5 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached cyclonedx_python_lib-11.12.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting pip-api>=0.0.28 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached pip_api-0.0.35-py3-none-any.whl.metadata (17 kB)
+Collecting pip-requirements-parser>=32.0.0 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached pip_requirements_parser-32.0.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting requests>=2.31.0 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting rich>=12.4 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting tomli>=2.2.1 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached tomli-2.5.0-cp313-cp313-macosx_11_0_arm64.whl.metadata (10 kB)
+Collecting tomli-w>=1.2.0 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting platformdirs>=4.2.0 (from pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+Collecting license-expression<31,>=30 (from cyclonedx-python-lib<12,>=5->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached license_expression-30.4.4-py3-none-any.whl.metadata (11 kB)
+Collecting packageurl-python<2,>=0.11 (from cyclonedx-python-lib<12,>=5->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached packageurl_python-0.17.6-py3-none-any.whl.metadata (5.1 kB)
+Collecting py-serializable<3.0.0,>=2.1.0 (from cyclonedx-python-lib<12,>=5->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached py_serializable-2.1.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting boolean.py>=4.0 (from license-expression<31,>=30->cyclonedx-python-lib<12,>=5->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached boolean_py-5.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting defusedxml<0.8.0,>=0.7.1 (from py-serializable<3.0.0,>=2.1.0->cyclonedx-python-lib<12,>=5->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting msgpack<2.0.0,>=0.5.2 (from CacheControl>=0.13.0->CacheControl[filecache]>=0.13.0->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached msgpack-1.2.3-cp313-cp313-macosx_11_0_arm64.whl.metadata (8.3 kB)
+Collecting filelock>=3.8.0 (from CacheControl[filecache]>=0.13.0->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: pip in ./.venv/lib/python3.13/site-packages (from pip-api>=0.0.28->pip-audit>=2.10->gatekeeper-ci==0.1.0) (26.2.2)
+Collecting pyparsing (from pip-requirements-parser>=32.0.0->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.1 (from pydantic>=2.9.0->fastapi<1,>=0.156->gatekeeper-ci==0.1.0)
+  Using cached pydantic_core-2.50.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (6.5 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.31.0->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached charset_normalizer-3.5.2-cp313-cp313-macosx_10_13_universal2.whl.metadata (46 kB)
+Collecting urllib3<3,>=1.26 (from requests>=2.31.0->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=12.4->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12.4->pip-audit>=2.10->gatekeeper-ci==0.1.0)
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Using cached ruff-0.17.1-py3-none-macosx_11_0_arm64.whl (9.3 MB)
+Using cached fastapi-0.159.1-py3-none-any.whl (149 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached playwright-1.64.0-py3-none-macosx_11_0_arm64.whl (43.0 MB)
+Using cached greenlet-3.5.6-cp313-cp313-macosx_11_0_universal2.whl (294 kB)
+Using cached pyee-14.0.0-py3-none-any.whl (15 kB)
+Using cached pyjwt-2.15.1-py3-none-any.whl (33 kB)
+Using cached pytest-9.1.1-py3-none-any.whl (386 kB)
+Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Using cached uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Using cached annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Using cached click-8.5.0-py3-none-any.whl (125 kB)
+Using cached cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl (3.9 MB)
+Using cached cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl (184 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached hypothesis-6.170.5-cp313-cp313-macosx_11_0_arm64.whl (790 kB)
+Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pip_audit-2.10.1-py3-none-any.whl (62 kB)
+Using cached cyclonedx_python_lib-11.12.0-py3-none-any.whl (529 kB)
+Using cached license_expression-30.4.4-py3-none-any.whl (120 kB)
+Using cached packageurl_python-0.17.6-py3-none-any.whl (36 kB)
+Using cached py_serializable-2.1.0-py3-none-any.whl (23 kB)
+Using cached defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Using cached boolean_py-5.0-py3-none-any.whl (26 kB)
+Using cached cachecontrol-0.14.4-py3-none-any.whl (22 kB)
+Using cached msgpack-1.2.3-cp313-cp313-macosx_11_0_arm64.whl (89 kB)
+Using cached filelock-4.2.4-py3-none-any.whl (162 kB)
+Using cached pip_api-0.0.35-py3-none-any.whl (123 kB)
+Using cached pip_requirements_parser-32.0.1-py3-none-any.whl (35 kB)
+Using cached platformdirs-4.13.5-py3-none-any.whl (32 kB)
+Using cached pydantic-2.14.1-py3-none-any.whl (488 kB)
+Using cached pydantic_core-2.50.1-cp313-cp313-macosx_11_0_arm64.whl (2.0 MB)
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached charset_normalizer-3.5.2-cp313-cp313-macosx_10_13_universal2.whl (366 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+Using cached certifi-2026.10.19-py3-none-any.whl (136 kB)
+Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached starlette-1.9.0-py3-none-any.whl (80 kB)
+Using cached anyio-4.15.1-py3-none-any.whl (132 kB)
+Using cached tomli-2.5.0-cp313-cp313-macosx_11_0_arm64.whl (162 kB)
+Using cached tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Using cached pycparser-3.11-py3-none-any.whl (51 kB)
+Using cached pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Building wheels for collected packages: gatekeeper-ci
+  Building editable for gatekeeper-ci (pyproject.toml): started
+  Building editable for gatekeeper-ci (pyproject.toml): finished with status 'done'
+  Created wheel for gatekeeper-ci: filename=gatekeeper_ci-0.1.0-0.editable-py3-none-any.whl size=2897 sha256=1107b4a993748028b3430885689584735e6fd9e3f6a0730372bdc9b293c9d2be
+  Stored in directory: /private/var/folders/tx/r4bmp29x58v41hgmtzrwwx3h0000gn/T/pip-ephem-wheel-cache-0htr516v/wheels/4d/ee/81/7c4a19444ceb5eab0624ee383b91af5f567d06b441657dc81c
+Successfully built gatekeeper-ci
+Installing collected packages: sortedcontainers, boolean.py, urllib3, typing-extensions, tomli-w, tomli, ruff, pyparsing, PyJWT, pygments, pycparser, pluggy, platformdirs, pip-api, packaging, packageurl-python, msgpack, mdurl, license-expression, iniconfig, idna, hypothesis, h11, greenlet, filelock, defusedxml, click, charset_normalizer, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, requests, pytest, pyee, pydantic-core, py-serializable, pip-requirements-parser, opentelemetry-api, markdown-it-py, httpcore, cffi, anyio, starlette, rich, pydantic, playwright, httpx, cyclonedx-python-lib, cryptography, CacheControl, fastapi, pip-audit, gatekeeper-ci
+
+Successfully installed CacheControl-0.14.4 PyJWT-2.15.1 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 boolean.py-5.0 certifi-2026.10.19 cffi-2.1.1 charset_normalizer-3.5.2 click-8.5.0 cryptography-50.0.2 cyclonedx-python-lib-11.12.0 defusedxml-0.7.1 fastapi-0.159.1 filelock-4.2.4 gatekeeper-ci-0.1.0 greenlet-3.5.6 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 hypothesis-6.170.5 idna-3.20 iniconfig-2.3.1 license-expression-30.4.4 markdown-it-py-4.2.0 mdurl-0.1.2 msgpack-1.2.3 opentelemetry-api-1.45.1 packageurl-python-0.17.6 packaging-26.3 pip-api-0.0.35 pip-audit-2.10.1 pip-requirements-parser-32.0.1 platformdirs-4.13.5 playwright-1.64.0 pluggy-1.7.0 py-serializable-2.1.0 pycparser-3.11 pydantic-2.14.1 pydantic-core-2.50.1 pyee-14.0.0 pygments-2.21.0 pyparsing-3.3.3 pytest-9.1.1 requests-2.34.2 rich-15.0.0 ruff-0.17.1 sortedcontainers-2.4.0 starlette-1.9.0 tomli-2.5.0 tomli-w-1.2.0 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 uvicorn-0.54.0
+npm --prefix apps/web ci
+
+added 22 packages, and audited 23 packages in 746ms
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+cargo build --release --locked --manifest-path agent/Cargo.toml
+   Compiling version_check v0.9.5
+   Compiling libc v0.2.191
+   Compiling proc-macro2 v1.0.107
+   Compiling typenum v1.20.1
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling cfg-if v1.0.5
+   Compiling semver v1.0.28
+   Compiling zerocopy v0.8.63
+   Compiling utf8parse v0.2.2
+   Compiling serde_core v1.0.229
+   Compiling anstyle-parse v1.0.0
+   Compiling generic-array v0.14.7
+   Compiling rustc_version v0.4.1
+   Compiling anstyle v1.0.14
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling colorchoice v1.0.5
+   Compiling anstyle-query v1.1.5
+   Compiling curve25519-dalek v4.1.3
+   Compiling zmij v1.0.23
+   Compiling anstream v1.0.0
+   Compiling serde v1.0.229
+   Compiling signature v2.2.0
+   Compiling strsim v0.11.1
+   Compiling clap_lex v1.1.1
+   Compiling subtle v2.6.1
+   Compiling anyhow v1.0.104
+   Compiling heck v0.5.0
+   Compiling serde_json v1.0.154
+   Compiling zeroize v1.9.1
+   Compiling clap_builder v4.6.7
+   Compiling ed25519 v2.2.3
+   Compiling getrandom v0.2.17
+   Compiling rand_core v0.6.4
+   Compiling syn v3.0.9
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling cpufeatures v0.2.17
+   Compiling digest v0.10.7
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling sha2 v0.10.9
+   Compiling hex v0.4.3
+   Compiling ed25519-dalek v2.2.0
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.8
+   Compiling clap_derive v4.6.7
+   Compiling serde_derive v1.0.229
+   Compiling clap v4.6.7
+   Compiling gatekeeper-agent v0.1.0 (/private/tmp/gatekeeper-native.x40zUC/repo/agent)
+    Finished `release` profile [optimized] target(s) in 6.24s
+mkdir -p bin
+cp agent/target/release/gatekeeper-agent bin/
+npm --prefix apps/web run build
+
+> gatekeeper-console@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.53 kB │ gzip:  0.36 kB
+dist/assets/index-EFH-7La8.css    5.80 kB │ gzip:  1.90 kB
+dist/assets/index-YwAea1yP.js   207.39 kB │ gzip: 64.74 kB
+✓ built in 392ms
+.venv/bin/ruff check gatekeeper scripts tests
+All checks passed!
+.venv/bin/ruff format --check gatekeeper scripts tests
+23 files already formatted
+cargo fmt --manifest-path agent/Cargo.toml --check
+cargo clippy --locked --manifest-path agent/Cargo.toml --all-targets -- -D warnings
+   Compiling version_check v0.9.5
+   Compiling libc v0.2.191
+   Compiling proc-macro2 v1.0.107
+    Checking cfg-if v1.0.5
+    Checking typenum v1.20.1
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling semver v1.0.28
+   Compiling zerocopy v0.8.63
+   Compiling serde_core v1.0.229
+    Checking utf8parse v0.2.2
+    Checking anstyle-parse v1.0.0
+   Compiling zmij v1.0.23
+   Compiling rustc_version v0.4.1
+    Checking anstyle v1.0.14
+   Compiling generic-array v0.14.7
+    Checking is_terminal_polyfill v1.70.2
+    Checking colorchoice v1.0.5
+   Compiling curve25519-dalek v4.1.3
+    Checking anstyle-query v1.1.5
+    Checking anstream v1.0.0
+   Compiling serde_json v1.0.154
+    Checking zeroize v1.9.1
+   Compiling serde v1.0.229
+    Checking signature v2.2.0
+    Checking strsim v0.11.1
+    Checking clap_lex v1.1.1
+   Compiling anyhow v1.0.104
+   Compiling heck v0.5.0
+    Checking subtle v2.6.1
+    Checking clap_builder v4.6.7
+   Compiling syn v3.0.9
+    Checking ed25519 v2.2.3
+    Checking itoa v1.0.18
+    Checking getrandom v0.2.17
+    Checking cpufeatures v0.2.17
+    Checking memchr v2.8.3
+    Checking rand_core v0.6.4
+    Checking hex v0.4.3
+    Checking block-buffer v0.10.4
+    Checking crypto-common v0.1.7
+    Checking digest v0.10.7
+    Checking sha2 v0.10.9
+    Checking ed25519-dalek v2.2.0
+   Compiling serde_derive v1.0.229
+   Compiling clap_derive v4.6.7
+    Checking ppv-lite86 v0.2.21
+    Checking rand_chacha v0.3.1
+    Checking rand v0.8.8
+    Checking clap v4.6.7
+    Checking gatekeeper-agent v0.1.0 (/private/tmp/gatekeeper-native.x40zUC/repo/agent)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.57s
+npm --prefix apps/web run lint
+
+> gatekeeper-console@0.1.0 lint
+> prettier --check src
+
+Checking formatting...
+All matched files use Prettier code style!
+.venv/bin/python -m pytest -q
+.......................                                                  [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /private/tmp/gatekeeper-native.x40zUC/repo/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+23 passed, 1 warning in 1.81s
+cargo test --locked --manifest-path agent/Cargo.toml
+   Compiling cfg-if v1.0.5
+   Compiling typenum v1.20.1
+   Compiling utf8parse v0.2.2
+   Compiling libc v0.2.191
+   Compiling anstyle v1.0.14
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling zerocopy v0.8.63
+   Compiling colorchoice v1.0.5
+   Compiling anstyle-query v1.1.5
+   Compiling serde_core v1.0.229
+   Compiling anstyle-parse v1.0.0
+   Compiling signature v2.2.0
+   Compiling strsim v0.11.1
+   Compiling clap_lex v1.1.1
+   Compiling subtle v2.6.1
+   Compiling anstream v1.0.0
+   Compiling zeroize v1.9.1
+   Compiling ed25519 v2.2.3
+   Compiling zmij v1.0.23
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling clap_builder v4.6.7
+   Compiling anyhow v1.0.104
+   Compiling hex v0.4.3
+   Compiling generic-array v0.14.7
+   Compiling getrandom v0.2.17
+   Compiling cpufeatures v0.2.17
+   Compiling rand_core v0.6.4
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling curve25519-dalek v4.1.3
+   Compiling sha2 v0.10.9
+   Compiling ed25519-dalek v2.2.0
+   Compiling serde_json v1.0.154
+   Compiling serde v1.0.229
+   Compiling clap v4.6.7
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.8
+   Compiling gatekeeper-agent v0.1.0 (/private/tmp/gatekeeper-native.x40zUC/repo/agent)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.58s
+     Running unittests src/lib.rs (agent/target/debug/deps/gatekeeper_agent-6159992d048e4708)
+
+running 8 tests
+test tests::valid_signature_and_digest_pass ... ok
+test tests::wrong_commit_is_rejected ... ok
+test tests::artifact_mutation_blocked ... ok
+test tests::untrusted_key_blocked ... ok
+test tests::scanner_error_is_not_clean_scan ... ok
+test tests::high_severity_cannot_be_signed_into_approval ... ok
+test tests::expiry_and_future_claims_blocked ... ok
+test tests::arbitrary_byte_mutations_rejected ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/main.rs (agent/target/debug/deps/gatekeeper_agent-fd326365a43a1fad)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests gatekeeper_agent
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+0918c5515a688865350713ab76e6e13b2a001737

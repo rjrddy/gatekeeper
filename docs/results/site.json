@@ -1,0 +1,12 @@
+{
+  "url": "https://gatekeeper-ten-sandy.vercel.app",
+  "anonymous_http_status": 200,
+  "page_errors": [],
+  "measurement_cards": 3,
+  "canary_rows": 3,
+  "video_played": true,
+  "video_duration_seconds": 93,
+  "mobile_no_overflow": true,
+  "public_proof_json_status": 200,
+  "scope": "Public static evidence page; interactive API not deployed."
+}

@@ -1,0 +1,114 @@
+gates	Fresh clone Compose with independent HTTP services	﻿2026-10-22T03:24:01.5367974Z ##[group]Run git clone --no-local . /tmp/gatekeeper-clean
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5368466Z ^[[36;1mgit clone --no-local . /tmp/gatekeeper-clean^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5368802Z ^[[36;1mcd /tmp/gatekeeper-clean^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5369085Z ^[[36;1mpython scripts/configure.py^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5369374Z ^[[36;1mmkdir -p docs/results^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5370069Z ^[[36;1mtrap 'docker compose logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"; docker compose down' EXIT^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5370784Z ^[[36;1mdocker compose up --build -d^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5371533Z ^[[36;1mfor i in $(seq 1 120); do curl -fsS http://localhost:8082/health && break; sleep 2; done^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5372031Z ^[[36;1mcurl --fail http://localhost:8082/health^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5372341Z ^[[36;1mset -a^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5372552Z ^[[36;1m. ./.env^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5372750Z ^[[36;1mset +a^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5373059Z ^[[36;1m"$GITHUB_WORKSPACE/.venv/bin/python" scripts/compose_smoke.py^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5373562Z ^[[36;1mdocker compose exec -T api python -m gatekeeper.seed^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5374551Z ^[[36;1mdocker compose exec -T api python -c 'import importlib.metadata as m; print("\n".join(sorted(d.metadata["Name"]+"=="+d.version for d in m.distributions() if d.metadata["Name"] != "gatekeeper-ci")))' > docs/results/runtime-requirements.txt^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5375874Z ^[[36;1m"$GITHUB_WORKSPACE/.venv/bin/pip-audit" -r docs/results/runtime-requirements.txt --no-deps --disable-pip --format json > docs/results/container-audit.json^[[0m
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5436981Z shell: /usr/bin/bash -e {0}
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5437244Z env:
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5437701Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5438157Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5438614Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5439019Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5439430Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5439826Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5440159Z ##[endgroup]
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.5540211Z Cloning into '/tmp/gatekeeper-clean'...
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:01.6049071Z Created ignored .env (mode 0600). Open locally for the operator password.
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.0497726Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.0498367Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.0498703Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.0498998Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.0499384Z  Image gatekeeper-local Building 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.1280476Z #1 [internal] load local bake definitions
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.2759441Z #1 reading from stdin 2.15kB done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.2760045Z #1 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.3877161Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.3877968Z #2 [good internal] load build definition from Dockerfile
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.3878772Z #2 transferring dockerfile: 1.13kB done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.3879199Z #2 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.3879343Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.3879597Z #3 [auth] library/rust:pull token for registry-1.docker.io
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5381737Z #3 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5382053Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5382593Z #4 [auth] library/python:pull token for registry-1.docker.io
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5383087Z #4 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5383253Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5383544Z #5 [auth] library/node:pull token for registry-1.docker.io
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5383969Z #5 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5384128Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.5384515Z #6 [good internal] load metadata for docker.io/library/node:22-bookworm-slim
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8752934Z #6 DONE 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8754384Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8756325Z #7 [bad internal] load metadata for docker.io/library/rust:1.99.1-bookworm
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8757163Z #7 DONE 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8757376Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8757924Z #8 [slow internal] load metadata for docker.io/library/python:3.13-slim-bookworm
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8758738Z #8 DONE 0.5s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8758972Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8759241Z #9 [bad internal] load .dockerignore
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8759811Z #9 transferring context: 154B done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8760255Z #9 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8760448Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8760709Z #10 [slow internal] load build context
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8761922Z #10 transferring context: 145.45kB done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8762439Z #10 DONE 0.0s
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8762666Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8763007Z #11 [slow stage-2  4/10] COPY pyproject.toml ./
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8763583Z #11 CACHED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8763819Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8764209Z #12 [slow stage-2  5/10] COPY gatekeeper/ ./gatekeeper/
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8764824Z #12 CACHED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8765043Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8765881Z #13 [slow stage-2  3/10] RUN groupadd --gid 10001 gatekeeper && useradd --uid 10001 --gid 10001 --create-home gatekeeper && mkdir /data && chown gatekeeper:gatekeeper /data
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8766660Z #13 CACHED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8766782Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8766943Z #14 [slow stage-2  2/10] WORKDIR /app
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8767357Z #14 CACHED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8767582Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8767952Z #15 [slow stage-2  6/10] COPY fixtures/ ./fixtures/
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8769495Z #15 ERROR: failed to calculate checksum of ref mfuti2ruf5bjq0nor15eizcve::6qxp2ifa5ibk7cqvckoxsgqlr: "/fixtures": not found
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8770166Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8771251Z #16 [api stage-2  1/10] FROM docker.io/library/python:3.13-slim-bookworm@sha256:a881a81282cca8c57f97014867fa651def1b3799030cc6b1cff45ed55ba8ef36
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.8773454Z #16 resolve docker.io/library/python:3.13-slim-bookworm@sha256:a881a81282cca8c57f97014867fa651def1b3799030cc6b1cff45ed55ba8ef36 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9359425Z #16 CANCELED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9359771Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9360414Z #17 [stable agent 1/4] FROM docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9361899Z #17 resolve docker.io/library/rust:1.99.1-bookworm@sha256:edaa2a8cc254d5936207af267114814c61cceea40b46eaa4e976068af55e20e7 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9362505Z #17 CANCELED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9362629Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9363190Z #18 [api web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9364959Z #18 resolve docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d 0.0s done
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9365671Z #18 CANCELED
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9365909Z ------
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9366203Z  > [slow stage-2  6/10] COPY fixtures/ ./fixtures/:
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9366627Z ------
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9367111Z Dockerfile:19
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9367276Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9367453Z --------------------
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9367702Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9367851Z   17 |     COPY pyproject.toml ./
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9368177Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9368419Z   18 |     COPY gatekeeper/ ./gatekeeper/
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9368646Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9368835Z   19 | >>> COPY fixtures/ ./fixtures/
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9369025Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9369538Z   20 |     RUN pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.0.0 && pip install --no-cache-dir .
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9383055Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9383643Z   21 |     COPY --from=agent /build/target/release/gatekeeper-agent /app/bin/gatekeeper-agent
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9384242Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9384403Z --------------------
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9384630Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9385938Z target stable: failed to solve: failed to compute cache key: failed to calculate checksum of ref mfuti2ruf5bjq0nor15eizcve::6qxp2ifa5ibk7cqvckoxsgqlr: "/fixtures": not found
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:02.9386966Z 
+gates	Fresh clone Compose with independent HTTP services	2026-10-22T03:24:03.0671334Z ##[error]Process completed with exit code 1.
