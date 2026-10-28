@@ -1,0 +1,78 @@
+{
+  "project": "gatekeeper-showcase",
+  "scope": "Synthetic DOM using actual shipped motion module",
+  "noEntranceAnimation": true,
+  "unchangedNodeReplacementIgnored": true,
+  "observedAnimations": [
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "id": "contract-key",
+      "frames": [
+        {
+          "transform": "scaleX(0.97)"
+        },
+        {
+          "transform": "scaleX(1)"
+        }
+      ],
+      "options": {
+        "duration": 160,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 108.79999995231628
+    },
+    {
+      "tag": "TD",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "scaleX(0.88)"
+        },
+        {
+          "transform": "scaleX(1)"
+        }
+      ],
+      "options": {
+        "duration": 180,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 148.70000004768372
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "scaleX(0.88)"
+        },
+        {
+          "transform": "scaleX(1)"
+        }
+      ],
+      "options": {
+        "duration": 180,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 148.70000004768372
+    }
+  ],
+  "transformOpacityOnly": true,
+  "zeroDelay": true,
+  "immediatePointerAndKeyboard": true,
+  "edgeClickTargetStableUntilActivation": true,
+  "disabledAndEditorExcluded": true,
+  "liveReducedMotionCancellation": true,
+  "reEnable": true,
+  "pagehideCleanup": true,
+  "pageErrors": [],
+  "initialReducedMotion": true
+}

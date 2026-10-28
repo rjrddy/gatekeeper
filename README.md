@@ -49,3 +49,5 @@ Caught failures are retained: [real signed vulnerability rejection](docs/results
 6. **Next:**
 
 Install the App in an authorized test repo; ingest public JUnit artifacts with held-out labels; implement reviewed quarantine lifecycle; add provider-aware nested-module plan resolution; establish distributed controller ownership and persistent interactive hosting; bind signing to an audited builder identity and scanner-database freshness. Full scope beyond the local demo remains explicitly partial.
+
+Contextual motion uses finite transform-only responses to real controls and changed evidence, with live reduced-motion cancellation. See [motion design and validation](docs/MOTION.md); frame rate is not measured.

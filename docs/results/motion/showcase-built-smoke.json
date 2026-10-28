@@ -1,0 +1,36 @@
+{
+  "surface": "gatekeeper-showcase",
+  "source": "flagships/gatekeeper/deploy/site/dist",
+  "scope": "Actual built UI/control/reduced-motion smoke; backend unavailable for static console previews except Fit. Separate live workflows verify ten backends.",
+  "controlResponse": true,
+  "offlineActionsRemainDisabled": false,
+  "liveReducedMotion": true,
+  "pageErrors": [],
+  "mobileOverflow": false,
+  "widths": [
+    1440,
+    390
+  ],
+  "animations": [
+    {
+      "tag": "A",
+      "cls": "button",
+      "id": "",
+      "frames": [
+        {
+          "transform": "scaleX(0.97)"
+        },
+        {
+          "transform": "scaleX(1)"
+        }
+      ],
+      "options": {
+        "duration": 160,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 461.2999999523163
+    }
+  ]
+}

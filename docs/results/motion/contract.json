@@ -1,0 +1,102 @@
+{
+  "project": "gatekeeper",
+  "scope": "Synthetic DOM using actual shipped motion module",
+  "noEntranceAnimation": true,
+  "unchangedNodeReplacementIgnored": true,
+  "observedAnimations": [
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "id": "contract-key",
+      "frames": [
+        {
+          "transform": "scaleX(0.97)"
+        },
+        {
+          "transform": "scaleX(1)"
+        }
+      ],
+      "options": {
+        "duration": 160,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 109.30000007152557
+    },
+    {
+      "tag": "DIV",
+      "cls": "badge",
+      "id": "",
+      "frames": [
+        {
+          "transform": "scaleX(0.88)"
+        },
+        {
+          "transform": "scaleX(1)"
+        }
+      ],
+      "options": {
+        "duration": 180,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 152.5
+    },
+    {
+      "tag": "DIV",
+      "cls": "mono",
+      "id": "",
+      "frames": [
+        {
+          "transform": "translateX(-4px)"
+        },
+        {
+          "transform": "translateX(0.8px)",
+          "offset": 0.65
+        },
+        {
+          "transform": "translateX(0)"
+        }
+      ],
+      "options": {
+        "duration": 170,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 152.60000002384186
+    },
+    {
+      "tag": "STRONG",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "translateX(3px)"
+        },
+        {
+          "transform": "translateX(0)"
+        }
+      ],
+      "options": {
+        "duration": 160,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 152.60000002384186
+    }
+  ],
+  "transformOpacityOnly": true,
+  "zeroDelay": true,
+  "immediatePointerAndKeyboard": true,
+  "edgeClickTargetStableUntilActivation": true,
+  "disabledAndEditorExcluded": true,
+  "liveReducedMotionCancellation": true,
+  "reEnable": true,
+  "pagehideCleanup": true,
+  "pageErrors": [],
+  "initialReducedMotion": true
+}

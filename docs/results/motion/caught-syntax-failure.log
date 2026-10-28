@@ -1,0 +1,9 @@
+/Users/rajreddy/dev/outreach/flagships/gatekeeper/deploy/site/app.js:5
+  "name": "gatekeeper",
+          ^^^^^^^^^^^^
+
+SyntaxError: Invalid destructuring assignment target
+    at wrapSafe (node:internal/modules/cjs/loader:1464:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v20.20.2

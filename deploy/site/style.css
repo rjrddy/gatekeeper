@@ -560,3 +560,12 @@ footer {
     transition: none !important;
   }
 }
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.motion-notes { border-block: 1px solid currentColor; }
+.motion-notes > summary { cursor: pointer; position: relative; padding: 16px 6px; font: 600 11px ui-monospace, monospace; letter-spacing: .07em; }
+.motion-notes > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.motion-notes > summary::after { content: ""; position: absolute; inset: auto 0 0; height: 2px; background: currentColor; transform-origin: left; transform: scaleX(.12); }
+.motion-notes[open] > summary::after { transform: scaleX(1); }
+@media(prefers-reduced-motion:no-preference) { .motion-notes > summary::after { transition: transform 180ms cubic-bezier(.16,1,.3,1); } }
