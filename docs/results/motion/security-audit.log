@@ -1,0 +1,10 @@
+Collecting setuptools==84.1.0
+  Downloading setuptools-84.1.0-py3-none-any.whl.metadata (6.6 kB)
+Downloading setuptools-84.1.0-py3-none-any.whl (819 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 819.4/819.4 kB 18.9 MB/s  0:00:00
+Installing collected packages: setuptools
+Successfully installed setuptools-84.1.0
+No known vulnerabilities found
+Name          Skip Reason
+------------- ----------------------------------------------------------------------------
+gatekeeper-ci Dependency not found on PyPI and could not be audited: gatekeeper-ci (0.1.0)

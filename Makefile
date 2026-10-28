@@ -6,7 +6,7 @@ endif
 .PHONY: setup build lint test bench demo scan
 setup:
 	python3 -m venv .venv
-	.venv/bin/pip install --upgrade pip==26.2.2 setuptools==84.0.0
+	.venv/bin/pip install --upgrade pip==26.2.2 setuptools==84.1.0
 	.venv/bin/pip install -e '.[dev]'
 	npm --prefix apps/web ci
 build:

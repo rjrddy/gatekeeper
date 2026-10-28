@@ -1,0 +1,22 @@
+gates	Run make scan	﻿2026-10-28T02:04:55.8824531Z ##[group]Run make scan
+gates	Run make scan	2026-10-28T02:04:55.8825010Z ^[[36;1mmake scan^[[0m
+gates	Run make scan	2026-10-28T02:04:55.8865673Z shell: /usr/bin/bash -e {0}
+gates	Run make scan	2026-10-28T02:04:55.8865954Z env:
+gates	Run make scan	2026-10-28T02:04:55.8866238Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+gates	Run make scan	2026-10-28T02:04:55.8866715Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+gates	Run make scan	2026-10-28T02:04:55.8867173Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+gates	Run make scan	2026-10-28T02:04:55.8867589Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+gates	Run make scan	2026-10-28T02:04:55.8868146Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+gates	Run make scan	2026-10-28T02:04:55.8868860Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+gates	Run make scan	2026-10-28T02:04:55.8869447Z ##[endgroup]
+gates	Run make scan	2026-10-28T02:04:55.8961043Z .venv/bin/pip-audit --progress-spinner off
+gates	Run make scan	2026-10-28T02:04:58.3919449Z Found 1 known vulnerability in 1 package
+gates	Run make scan	2026-10-28T02:04:58.3920334Z Name       Version ID                  Fix Versions
+gates	Run make scan	2026-10-28T02:04:58.3921078Z ---------- ------- ------------------- ------------
+gates	Run make scan	2026-10-28T02:04:58.3922119Z setuptools 84.0.0  GHSA-xmj3-9gf7-h52w 84.1.0
+gates	Run make scan	2026-10-28T02:04:58.3922497Z 
+gates	Run make scan	2026-10-28T02:04:58.3922688Z Name          Skip Reason
+gates	Run make scan	2026-10-28T02:04:58.3923444Z ------------- ----------------------------------------------------------------------------
+gates	Run make scan	2026-10-28T02:04:58.3924596Z gatekeeper-ci Dependency not found on PyPI and could not be audited: gatekeeper-ci (0.1.0)
+gates	Run make scan	2026-10-28T02:04:58.4456967Z make: *** [Makefile:34: scan] Error 1
+gates	Run make scan	2026-10-28T02:04:58.4479527Z ##[error]Process completed with exit code 2.

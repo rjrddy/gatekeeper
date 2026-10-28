@@ -23,3 +23,7 @@ The existing public evidence page is covered by `showcase-contract.json`, `showc
 A syntax gate caught an incorrect source splice during development. It was corrected before publication; the failing output is retained in `docs/results/motion/caught-syntax-failure.log`. The technical-notes fold is native and initially open; toggling is immediate and works with motion disabled.
 
 Button feedback begins when click targeting is committed, so the first press does not shrink a hitbox underneath the pointer. Editable/dragging surfaces are excluded. Backend APIs, ranking/math policies, measurements, and document source data were not changed.
+
+## Separate build-tool security update
+
+CI passed application checks but caught setuptools 84.0.0 (GHSA-xmj3-9gf7-h52w) in the existing build environment. Both native setup and container pins now use the advisory's patched 84.1.0. The gate was retained; no application policy or benchmark changed. See `caught-ci-security-failure.log` and `security-audit.log`. Reference: https://github.com/advisories/GHSA-xmj3-9gf7-h52w .
