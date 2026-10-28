@@ -22,7 +22,7 @@
         "iterations": 1,
         "fill": "none"
       },
-      "at": 109.30000007152557
+      "at": 109.39999997615814
     },
     {
       "tag": "DIV",
@@ -42,7 +42,7 @@
         "iterations": 1,
         "fill": "none"
       },
-      "at": 152.5
+      "at": 167.5
     },
     {
       "tag": "DIV",
@@ -66,7 +66,7 @@
         "iterations": 1,
         "fill": "none"
       },
-      "at": 152.60000002384186
+      "at": 167.59999990463257
     },
     {
       "tag": "STRONG",
@@ -86,13 +86,14 @@
         "iterations": 1,
         "fill": "none"
       },
-      "at": 152.60000002384186
+      "at": 167.59999990463257
     }
   ],
   "transformOpacityOnly": true,
   "zeroDelay": true,
   "immediatePointerAndKeyboard": true,
   "edgeClickTargetStableUntilActivation": true,
+  "immediateNeighborsOnly": true,
   "disabledAndEditorExcluded": true,
   "liveReducedMotionCancellation": true,
   "reEnable": true,

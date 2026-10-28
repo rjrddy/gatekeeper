@@ -1,6 +1,6 @@
-src/motion.ts 67ms
-src/main.tsx 53ms (unchanged)
-src/style.css 39ms (unchanged)
+src/motion.ts 87ms
+src/main.tsx 56ms (unchanged)
+src/style.css 47ms (unchanged)
 
 > gatekeeper-console@0.1.0 lint
 > prettier --check src
@@ -16,8 +16,8 @@ transforming...
 ✓ 29 modules transformed.
 rendering chunks...
 computing gzip size...
-dist/index.html                   0.53 kB │ gzip:  0.35 kB
+dist/index.html                   0.53 kB │ gzip:  0.36 kB
 dist/assets/index-BQm6US-s.css    8.75 kB │ gzip:  2.72 kB
-dist/assets/index-BpytmphZ.js   211.13 kB │ gzip: 66.21 kB
-✓ built in 516ms
+dist/assets/index-3IxwM-Lf.js   211.13 kB │ gzip: 66.23 kB
+✓ built in 565ms
 Built public evidence from measured local runs. Interactive API is not hosted.

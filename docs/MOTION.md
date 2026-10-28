@@ -27,3 +27,5 @@ Button feedback begins when click targeting is committed, so the first press doe
 ## Separate build-tool security update
 
 CI passed application checks but caught setuptools 84.0.0 (GHSA-xmj3-9gf7-h52w) in the existing build environment. Both native setup and container pins now use the advisory's patched 84.1.0. The gate was retained; no application policy or benchmark changed. See `caught-ci-security-failure.log` and `security-audit.log`. Reference: https://github.com/advisories/GHSA-xmj3-9gf7-h52w .
+
+Connected controls recoil only with their immediate previous/next matching siblings. The left sibling moves left, the right moves right; distant controls do not react. The runtime reads sibling references, not geometry.

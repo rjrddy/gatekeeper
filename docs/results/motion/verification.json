@@ -2,9 +2,9 @@
   "project": "gatekeeper",
   "motion_profile": "Release interlock",
   "source_sha256": {
-    "apps/web/src/motion.ts": "33a707919f204dc92356fee3625f249ca4949178285924b9592df2156af3e442",
+    "apps/web/src/motion.ts": "6f28e45d854bc759764564dd28d0cf720a2ace663aaa6d98a226a7c9d02d5d68",
     "apps/web/src/style.css": "ccfab425e3481e254df1c17514285d5093bfc2bc626f66c1d78321be8720a7b7",
-    "deploy/site/app.js": "0fbbc22b0195a09588de689329d6e542b820f129af9899031f16d4ef75f9f0f1"
+    "deploy/site/app.js": "4e8ebbdab75624efb7f5091cf8143e7f201952077346cf5c5a9b5885a9707537"
   },
   "frontend_build_lint": "passed",
   "motion_contract": "passed",

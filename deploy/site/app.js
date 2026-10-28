@@ -87,10 +87,13 @@ function installMotion(profile) {
             interacted = true;
             play(control, profile.press, 160);
             if (control.matches(profile.neighbors)) {
-                for (const sibling of Array.from(control.parentElement?.children || []).filter(x => x !== control && x.matches(profile.neighbors)).slice(0, 2)) {
-                    play(sibling, [{ transform: 'translateX(0) scaleX(1)' }, { transform: 'translateX(2px) scaleX(0.985)', offset: 0.28 }, { transform: 'translateX(0) scaleX(1)' }], 190);
-                }
-            }
+        const neighbors = [control.previousElementSibling, control.nextElementSibling];
+        for (const [index, sibling] of neighbors.entries()) {
+          if (!sibling || !sibling.matches(profile.neighbors)) continue;
+          const displacement = index === 0 ? -2 : 2;
+          play(sibling, [{transform:'translateX(0) scaleX(1)'}, {transform:'translateX('+displacement+'px) scaleX(0.985)',offset:0.28}, {transform:'translateX(0) scaleX(1)'}], 190);
+        }
+      }
         };
         // Animate only once click targeting is committed; shrinking a pressed hitbox can otherwise lose edge clicks.
         document.addEventListener('click', press, { capture: true, signal });
